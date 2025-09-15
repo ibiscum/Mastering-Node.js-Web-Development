@@ -1,8 +1,15 @@
 import { createServer } from "http";
 import express, {Express, Request, Response } from "express";
+import rateLimit from "express-rate-limit";
 import { readHandler } from "./readHandler";
 
 const port = 5000;
+
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+});
 
 const expressApp: Express = express();
 
@@ -10,7 +17,7 @@ expressApp.use(express.json());
 
 expressApp.post("/read", readHandler);
 
-expressApp.get("/sendcity", (req, resp) => {
+expressApp.get("/sendcity", limiter, (req, resp) => {
     resp.sendFile("city.png", { root: "static"});
 });
 
