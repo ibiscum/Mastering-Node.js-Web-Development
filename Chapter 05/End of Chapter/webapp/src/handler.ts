@@ -1,5 +1,6 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { Request, Response } from "express";
+import escape from "escape-html";
 
 export const redirectionHandler = (req: IncomingMessage, resp: ServerResponse) => {
     resp.writeHead(302, {
@@ -19,7 +20,7 @@ export const newUrlHandler = (req: Request, resp: Response) => {
 
 export const defaultHandler = (req: Request, resp: Response) => {
     if (req.query.keyword) {
-        resp.send(`Hello, ${req.query.keyword}`);                    
+        resp.send(`Hello, ${escape(String(req.query.keyword))}`);                    
     } else {
         resp.send(`Hello, ${req.protocol.toUpperCase()}`);
     }
