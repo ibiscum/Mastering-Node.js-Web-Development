@@ -1,4 +1,5 @@
 import { Express, NextFunction, Request, Response, Router } from "express";
+import rateLimit from "express-rate-limit";
 import { createAdminCatalogRoutes } from "./admin_catalog_routes";
 import { createAdminOrderRoutes } from "./admin_order_routes";
 import passport from "passport";
@@ -43,9 +44,14 @@ export const createAdminRoutes = (app: Express) => {
     createAdminOrderRoutes(order_router);
     app.use("/api/orders", apiAuth, order_router);
 
+    const adminRateLimiter = rateLimit({
+        windowMs: 15 * 60 * 1000, // 15 minutes
+        max: 100 // limit each IP to 100 requests per windowMs
+    });
+
     const db_router = Router();
     createDbManagementRoutes(db_router);
-    app.use("/api/database", apiAuth, db_router);
+    app.use("/api/database", adminRateLimiter, apiAuth, db_router);
 
     const userAuth = (req: Request, resp: Response, next: NextFunction) => {
         if (!authCheck(req)) {
@@ -72,7 +78,7 @@ export const createAdminRoutes = (app: Express) => {
         resp.render("admin/admin_layout");
     })
 
-    app.get("/admin/database", userAuth, (req, resp) => {
+    app.get("/admin/database", adminRateLimiter, userAuth, (req, resp) => {
         resp.locals.content = "/api/database";
         resp.render("admin/admin_layout");
     })    
