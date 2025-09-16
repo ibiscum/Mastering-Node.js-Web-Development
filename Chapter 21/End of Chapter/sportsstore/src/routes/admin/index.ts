@@ -79,7 +79,7 @@ export const createAdminRoutes = (app: Express) => {
         resp.render("admin/admin_layout");
     })
 
-    app.get("/admin/orders", userAuth, (req, resp) => {
+    app.get("/admin/orders", adminRateLimiter, userAuth, (req, resp) => {
         resp.locals.content = "/api/orders/table";
         resp.render("admin/admin_layout");
     })
