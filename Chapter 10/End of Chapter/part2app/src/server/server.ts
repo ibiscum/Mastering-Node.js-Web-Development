@@ -6,6 +6,13 @@ import helmet from "helmet";
 //import { registerCustomTemplateEngine } from "./custom_engine";
 import { engine } from "express-handlebars";
 import * as helpers from "./template_helpers";
+import * as fs from "fs";
+import * as path from "path";
+
+const TEMPLATE_DIR = path.resolve(__dirname, "../../templates/server");
+const allowedTemplates = fs.readdirSync(TEMPLATE_DIR)
+    .filter(name => name.endsWith(".handlebars"))
+    .map(name => name.replace(/\.handlebars$/, ""));
 
 const port = 5000;
 
@@ -30,6 +37,10 @@ expressApp.get("/dynamic/:file", (req, resp) => {
     if (!/^[A-Za-z0-9_-]+$/.test(fileName)) {
         resp.status(400).send("Invalid template name");
         return;
+    if (!allowedTemplates.includes(fileName)) {
+        resp.status(404).send("Template not found");
+        return;
+    }
     }
     resp.render(`${fileName}.handlebars`,
         { message: "Hello template", req,
