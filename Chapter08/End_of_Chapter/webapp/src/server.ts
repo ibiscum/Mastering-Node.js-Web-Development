@@ -4,6 +4,7 @@ import { readHandler } from "./readHandler";
 import cors from "cors";
 import httpProxy from "http-proxy";
 import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 
 const port = 5000;
 
@@ -35,7 +36,15 @@ expressApp.use(cors({
 }));
 expressApp.use(express.json());
 
-expressApp.post("/read", readHandler);
+
+const readLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+
+expressApp.post("/read", readLimiter, readHandler);
 expressApp.use(express.static("static"));
 expressApp.use(express.static("node_modules/bootstrap/dist"));
 expressApp.use((req, resp) => proxy.web(req, resp));
