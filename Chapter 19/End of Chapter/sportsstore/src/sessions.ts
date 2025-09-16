@@ -34,7 +34,7 @@ export const createSessions = (app: Express) => {
         resave: false, saveUninitialized: true,
         cookie: { 
             maxAge: config.maxAgeHrs * 60 * 60 * 1000, 
-            sameSite: false, httpOnly: false, secure: false }
+            sameSite: false, httpOnly: true, secure: false }
     }));    
     app.use(lusca.csrf());
 }
