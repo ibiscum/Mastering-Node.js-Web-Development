@@ -11,6 +11,14 @@ const port = 5000;
 
 const expressApp: Express = express();
 
+// Define the explicit list of allowed template names (without .handlebars extension)
+const ALLOWED_TEMPLATES = [
+    "home",
+    "about",
+    "contact"
+    // Add more allowed template names as necessary
+];
+
 const proxy = httpProxy.createProxyServer({
     target: "http://localhost:5100", ws: true
 });
@@ -31,6 +39,11 @@ expressApp.get("/dynamic/:file", (req, resp) => {
     // Only allow safe template names: letters, numbers, underscore, dash
     if (!/^[a-zA-Z0-9_-]+$/.test(file)) {
         resp.status(400).send("Invalid template name.");
+        return;
+    }
+    // Further restrict to allowed template files
+    if (!ALLOWED_TEMPLATES.includes(file)) {
+        resp.status(404).send("Template not found.");
         return;
     }
     resp.render(`${file}.handlebars`, 
