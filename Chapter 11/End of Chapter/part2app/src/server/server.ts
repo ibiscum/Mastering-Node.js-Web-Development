@@ -27,7 +27,13 @@ registerFormMiddleware(expressApp);
 registerFormRoutes(expressApp);
 
 expressApp.get("/dynamic/:file", (req, resp) => {
-    resp.render(`${req.params.file}.handlebars`, 
+    const file = req.params.file;
+    // Only allow safe template names: letters, numbers, underscore, dash
+    if (!/^[a-zA-Z0-9_-]+$/.test(file)) {
+        resp.status(400).send("Invalid template name.");
+        return;
+    }
+    resp.render(`${file}.handlebars`, 
         { message: "Hello template", req, helpers: { ...helpers } });
 });
 
