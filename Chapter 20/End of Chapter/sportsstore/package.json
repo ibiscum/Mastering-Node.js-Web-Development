@@ -54,6 +54,7 @@
         "passport-google-oauth20": "^2.0.0",
         "sequelize": "^6.35.1",
         "sqlite3": "^5.1.6",
-        "validator": "^13.11.0"
+        "validator": "^13.11.0",
+        "csurf": "^1.11.0"
     }
 }

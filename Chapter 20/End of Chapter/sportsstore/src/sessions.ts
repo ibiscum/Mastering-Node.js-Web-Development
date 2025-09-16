@@ -3,6 +3,7 @@ import { Sequelize } from "sequelize";
 import { getConfig, getSecret } from "./config";
 import session from "express-session";
 import sessionStore from "connect-session-sequelize";
+import csurf from "csurf";
 
 const config = getConfig("sessions");
 
@@ -35,4 +36,7 @@ export const createSessions = (app: Express) => {
             maxAge: config.maxAgeHrs * 60 * 60 * 1000, 
             sameSite: false, httpOnly: false, secure: false }
     }));    
+    
+    // Add CSRF protection middleware after session
+    app.use(csurf());
 }
