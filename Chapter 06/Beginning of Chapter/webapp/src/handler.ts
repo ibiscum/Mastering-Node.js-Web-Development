@@ -15,7 +15,7 @@ export const notFoundHandler = (req: Request, resp: Response) => {
 
 export const newUrlHandler = (req: Request, resp: Response) => {
     const msg = req.params.message ?? "(No Message)";
-    resp.send(`Hello, ${msg}`);
+    resp.send(`Hello, ${escapeHtml(msg)}`);
 }
 
 export const defaultHandler = (req: Request, resp: Response) => {
