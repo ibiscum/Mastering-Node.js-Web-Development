@@ -66,7 +66,7 @@ export const createAdminRoutes = (app: Express) => {
         next();
     };
 
-    app.get("/admin", userAuth, (req, resp) => 
+    app.get("/admin", adminRateLimiter, userAuth, (req, resp) => 
         resp.redirect("/admin/products"));
 
     app.get("/admin/products", userAuth, (req, resp) => {
