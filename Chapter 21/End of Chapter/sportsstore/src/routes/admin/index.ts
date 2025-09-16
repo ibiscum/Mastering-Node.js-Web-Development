@@ -8,6 +8,12 @@ import { createDbManagementRoutes } from "./database_routes";
 
 const users: string[] = getConfig("admin:users", []);
 
+// Rate limiter for admin API endpoints
+const adminRateLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
+});
+
 export const createAdminRoutes = (app: Express) => {
 
     app.use((req, resp, next) => {
@@ -44,10 +50,10 @@ export const createAdminRoutes = (app: Express) => {
     createAdminOrderRoutes(order_router);
     app.use("/api/orders", adminRateLimiter, apiAuth, order_router);
 
-    const adminRateLimiter = rateLimit({
-        windowMs: 15 * 60 * 1000, // 15 minutes
-        max: 100 // limit each IP to 100 requests per windowMs
-    });
+
+
+
+
 
     const db_router = Router();
     createDbManagementRoutes(db_router);
