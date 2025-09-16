@@ -25,8 +25,14 @@ expressApp.use(helmet());
 expressApp.use(express.json());
 
 expressApp.get("/dynamic/:file", (req, resp) => {
-    resp.render(`${req.params.file}.handlebars`, 
-        { message: "Hello template", req, 
+    const fileName = req.params.file;
+    // Allow only safe filenames: letters, numbers, underscores, hyphens
+    if (!/^[A-Za-z0-9_-]+$/.test(fileName)) {
+        resp.status(400).send("Invalid template name");
+        return;
+    }
+    resp.render(`${fileName}.handlebars`,
+        { message: "Hello template", req,
             helpers: { ...helpers }
         });
 });
