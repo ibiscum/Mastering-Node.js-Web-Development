@@ -42,7 +42,7 @@ export const createAdminRoutes = (app: Express) => {
 
     const order_router = Router();
     createAdminOrderRoutes(order_router);
-    app.use("/api/orders", apiAuth, order_router);
+    app.use("/api/orders", adminRateLimiter, apiAuth, order_router);
 
     const adminRateLimiter = rateLimit({
         windowMs: 15 * 60 * 1000, // 15 minutes
