@@ -3,7 +3,7 @@ import { Sequelize } from "sequelize";
 import { getConfig, getSecret } from "./config";
 import session from "express-session";
 import sessionStore from "connect-session-sequelize";
-
+import lusca from "lusca";
 const config = getConfig("sessions");
 
 const secret = getSecret("COOKIE_SECRET");
@@ -34,4 +34,5 @@ export const createSessions = (app: Express) => {
         cookie: { maxAge: config.maxAgeHrs * 60 * 60 * 1000, 
             sameSite: "strict" }
     }));
+    app.use(lusca.csrf());
 }
