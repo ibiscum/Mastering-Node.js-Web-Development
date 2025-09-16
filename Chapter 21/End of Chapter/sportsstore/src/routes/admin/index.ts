@@ -44,7 +44,7 @@ export const createAdminRoutes = (app: Express) => {
 
     const cat_router = Router();
     createAdminCatalogRoutes(cat_router);
-    app.use("/api/products", apiAuth, cat_router);
+    app.use("/api/products", adminRateLimiter, apiAuth, cat_router);
 
     const order_router = Router();
     createAdminOrderRoutes(order_router);
