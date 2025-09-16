@@ -11,10 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tsconfig/node20": "^20.1.4",
-    "@types/node": "^20.6.1",
-    "nodemon": "^2.0.20",
-    "tsc-watch": "^6.0.4",
-    "typescript": "^5.2.2"
+    "@tsconfig/node20": "^20.1.6",
+    "@types/node": "^24.5.0",
+    "nodemon": "^3.1.10",
+    "tsc-watch": "^7.1.1",
+    "typescript": "^5.9.2"
   }
 }
