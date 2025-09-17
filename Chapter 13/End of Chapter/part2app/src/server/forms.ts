@@ -4,7 +4,7 @@ import { getJsonCookie, setJsonCookie } from "./cookies";
 import cookieMiddleware from "cookie-parser";
 import { customSessionMiddleware } from "./sessions/middleware";
 import { getSession, sessionMiddleware } from "./sessions/session_helpers";
-
+import lusca from "lusca";
 const rowLimit = 10;
 
 export const registerFormMiddleware = (app: Express) => {
@@ -12,6 +12,7 @@ export const registerFormMiddleware = (app: Express) => {
     app.use(cookieMiddleware("mysecret"));
     //app.use(customSessionMiddleware());
     app.use(sessionMiddleware());
+    app.use(lusca.csrf());
 }
 
 export const registerFormRoutes = (app: Express) => {
@@ -19,7 +20,8 @@ export const registerFormRoutes = (app: Express) => {
     app.get("/form", async (req, resp) => {
         resp.render("age", {
             history: await repository.getAllResults(rowLimit),
-            personalHistory: getSession(req).personalHistory
+            personalHistory: getSession(req).personalHistory,
+            csrfToken: req.csrfToken()
         });
     });
 
