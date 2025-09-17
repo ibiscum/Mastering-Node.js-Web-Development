@@ -1,4 +1,5 @@
 import express, { Express } from "express";
+import csrf from "lusca";
 import repository  from "./data";
 import { getJsonCookie, setJsonCookie } from "./cookies";
 import cookieMiddleware from "cookie-parser";
@@ -12,6 +13,7 @@ export const registerFormMiddleware = (app: Express) => {
     app.use(cookieMiddleware("mysecret"));
     //app.use(customSessionMiddleware());
     app.use(sessionMiddleware());
+    app.use(csrf());
 }
 
 export const registerFormRoutes = (app: Express) => {
@@ -19,7 +21,8 @@ export const registerFormRoutes = (app: Express) => {
     app.get("/form", async (req, resp) => {
         resp.render("age", {
             history: await repository.getAllResults(rowLimit),
-            personalHistory: getSession(req).personalHistory
+            personalHistory: getSession(req).personalHistory,
+            csrfToken: req.csrfToken && req.csrfToken()
         });
     });
 
