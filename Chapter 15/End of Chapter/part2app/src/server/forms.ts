@@ -3,6 +3,7 @@ import repository  from "./data";
 import cookieMiddleware from "cookie-parser";
 import { sessionMiddleware } from "./sessions/session_helpers";
 import { roleGuard } from "./auth";
+import lusca from "lusca";
 import { Result } from "./data/repository";
 
 const rowLimit = 10;
@@ -11,6 +12,7 @@ export const registerFormMiddleware = (app: Express) => {
     app.use(express.urlencoded({extended: true}))
     app.use(cookieMiddleware("mysecret"));
     app.use(sessionMiddleware());
+    app.use(lusca.csrf());
 }
 
 export const registerFormRoutes = (app: Express) => {
