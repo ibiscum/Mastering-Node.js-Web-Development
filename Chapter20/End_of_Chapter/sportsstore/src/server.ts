@@ -18,7 +18,7 @@ expressApp.use(express.json());
 expressApp.use(express.urlencoded({extended: true}))
 
 expressApp.use(express.static("node_modules/bootstrap/dist"));
-expressApp.use(express.static("node_modules/bootstrap-icons"));
+expressApp.use("/icons", express.static("node_modules/bootstrap-icons/icons"));
 expressApp.use(express.static("node_modules/htmx.org/dist"));
 
 createTemplates(expressApp);
