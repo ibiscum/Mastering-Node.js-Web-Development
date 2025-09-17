@@ -26,8 +26,21 @@ expressApp.use(express.json());
 registerFormMiddleware(expressApp);
 registerFormRoutes(expressApp);
 
+// Allowlist of permitted template names (add to this list as needed)
+const allowedTemplates = [
+    "index",
+    "about",
+    "contact"
+];
+
 expressApp.get("/dynamic/:file", (req, resp) => {
-    resp.render(`${req.params.file}.handlebars`, 
+    const file = req.params.file;
+    // Only allow alphanumeric names, no slashes/dots
+    if (!/^[a-zA-Z0-9_-]+$/.test(file) || !allowedTemplates.includes(file)) {
+        resp.status(404).send("Not found");
+        return;
+    }
+    resp.render(`${file}.handlebars`, 
         { message: "Hello template", req, helpers: { ...helpers } });
 });
 
