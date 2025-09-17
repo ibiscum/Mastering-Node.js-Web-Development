@@ -1,4 +1,5 @@
 import { Express, NextFunction, Request, Response, Router } from "express";
+import rateLimit from "express-rate-limit";
 import { createAdminCatalogRoutes } from "./admin_catalog_routes";
 import { createAdminOrderRoutes } from "./admin_order_routes";
 import passport from "passport";
@@ -7,7 +8,13 @@ import { getConfig} from "../../config";
 const users: string[] = getConfig("admin:users", []);
 
 export const createAdminRoutes = (app: Express) => {
-
+    // Set up rate limiter for admin routes: max 50 requests per 15 minutes per IP
+    const adminLimiter = rateLimit({
+        windowMs: 15 * 60 * 1000, // 15 minutes
+        max: 50,
+        standardHeaders: true,
+        legacyHeaders: false,
+    });
     app.use((req, resp, next) => {
         resp.locals.layout = false;
         resp.locals.user = req.user;
@@ -49,20 +56,20 @@ export const createAdminRoutes = (app: Express) => {
         next();
     };
 
-    app.get("/admin", userAuth, (req, resp) => 
+    app.get("/admin", adminLimiter, userAuth, (req, resp) => 
         resp.redirect("/admin/products"));
 
-    app.get("/admin/products", userAuth, (req, resp) => {
+    app.get("/admin/products", adminLimiter, userAuth, (req, resp) => {
         resp.locals.content = "/api/products/table";
         resp.render("admin/admin_layout");
     })
 
-    app.get("/admin/products/edit/:id", userAuth, (req, resp) => {
+    app.get("/admin/products/edit/:id", adminLimiter, userAuth, (req, resp) => {
         resp.locals.content = `/api/products/edit/${req.params.id}`;
         resp.render("admin/admin_layout");
     })
 
-    app.get("/admin/orders", userAuth, (req, resp) => {
+    app.get("/admin/orders", adminLimiter, userAuth, (req, resp) => {
         resp.locals.content = "/api/orders/table";
         resp.render("admin/admin_layout");
     })
