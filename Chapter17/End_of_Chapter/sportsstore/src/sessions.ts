@@ -33,7 +33,7 @@ export const createSessions = (app: Express) => {
         secret, store,
         resave: true, saveUninitialized: false,
         cookie: { maxAge: config.maxAgeHrs * 60 * 60 * 1000, 
-            sameSite: "strict" }
+            sameSite: "strict", secure: true }
     }));
 
     // Add CSRF protection middleware
