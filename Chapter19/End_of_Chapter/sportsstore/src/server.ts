@@ -17,8 +17,6 @@ expressApp.use(express.json());
 expressApp.use(express.urlencoded({extended: true}))
 
 expressApp.use(express.static("node_modules/bootstrap/dist"));
-expressApp.use(express.static("node_modules/bootstrap-icons"));
-
 createTemplates(expressApp);
 createSessions(expressApp);
 
