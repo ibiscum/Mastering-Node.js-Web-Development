@@ -45,11 +45,11 @@ export const createAdminRoutes = (app: Express) => {
 
     const cat_router = Router();
     createAdminCatalogRoutes(cat_router);
-    app.use("/api/products", apiAuth, cat_router);
+    app.use("/api/products", adminLimiter, apiAuth, cat_router);
 
     const order_router = Router();
     createAdminOrderRoutes(order_router);
-    app.use("/api/orders", apiAuth, order_router);
+    app.use("/api/orders", adminLimiter, apiAuth, order_router);
 
     const userAuth = (req: Request, resp: Response, next: NextFunction) => {
         if (!authCheck(req)) {
