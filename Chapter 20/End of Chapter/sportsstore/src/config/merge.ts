@@ -1,5 +1,6 @@
 export const merge = (target: any, source: any) : any => {
     Object.keys(source).forEach(key => {
+        if (key === "__proto__" || key === "constructor" || key === "prototype") return;
         if (typeof source[key] === "object" 
                 && !Array.isArray(source[key])) {
             if (Object.hasOwn(target, key)) {
