@@ -37,7 +37,7 @@ export const sessionMiddleware = () => {
     return session({
         secret: "mysecret",
         store: store,
-        cookie: { maxAge: 300 * 1000, sameSite: "strict" },
+        cookie: { maxAge: 300 * 1000, sameSite: "strict", secure: true },
         resave: false, saveUninitialized: false
     })
 }
