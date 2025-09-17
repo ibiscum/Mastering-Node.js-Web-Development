@@ -9,11 +9,11 @@ import { getSession, sessionMiddleware } from "./sessions/session_helpers";
 const rowLimit = 10;
 
 export const registerFormMiddleware = (app: Express) => {
-    app.use(express.urlencoded({extended: true}))
+    app.use(express.urlencoded({extended: true}));
     app.use(cookieMiddleware("mysecret"));
-    //app.use(customSessionMiddleware());
     app.use(sessionMiddleware());
-    app.use(csrf());
+    // If you use a custom session middleware, place here
+    app.use(csrf()); // Register CSRF *after* session and cookie, and *before* routes
 }
 
 export const registerFormRoutes = (app: Express) => {
@@ -22,7 +22,7 @@ export const registerFormRoutes = (app: Express) => {
         resp.render("age", {
             history: await repository.getAllResults(rowLimit),
             personalHistory: getSession(req).personalHistory,
-            csrfToken: req.csrfToken && req.csrfToken()
+            csrfToken: req.csrfToken ? req.csrfToken() : ""
         });
     });
 
