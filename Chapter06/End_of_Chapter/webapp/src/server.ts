@@ -21,7 +21,7 @@ expressApp.get("/sendcity", limiter, (req, resp) => {
     resp.sendFile("city.png", { root: "static"});
 });
 
-expressApp.get("/downloadcity", (req: Request, resp: Response) => {
+expressApp.get("/downloadcity", limiter, (req: Request, resp: Response) => {
     resp.download("static/city.png");
 });
 
