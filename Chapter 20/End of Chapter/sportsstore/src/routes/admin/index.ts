@@ -15,6 +15,15 @@ export const createAdminRoutes = (app: Express) => {
         standardHeaders: true,
         legacyHeaders: false,
     });
+
+    // Set up rate limiter for admin API routes: max 50 requests per 15 minutes per IP
+    const apiLimiter = rateLimit({
+        windowMs: 15 * 60 * 1000, // 15 minutes
+        max: 50,
+        standardHeaders: true,
+        legacyHeaders: false,
+    });
+
     app.use((req, resp, next) => {
         resp.locals.layout = false;
         resp.locals.user = req.user;
@@ -43,11 +52,11 @@ export const createAdminRoutes = (app: Express) => {
 
     const cat_router = Router();
     createAdminCatalogRoutes(cat_router);
-    app.use("/api/products", apiAuth, cat_router);
+    app.use("/api/products", apiLimiter, apiAuth, cat_router);
 
     const order_router = Router();
     createAdminOrderRoutes(order_router);
-    app.use("/api/orders", apiAuth, order_router);
+    app.use("/api/orders", apiLimiter, apiAuth, order_router);
 
     const userAuth = (req: Request, resp: Response, next: NextFunction) => {
         if (!authCheck(req)) {
