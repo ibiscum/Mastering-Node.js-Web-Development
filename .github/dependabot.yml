@@ -6,6 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    directory: "/Chapter02/tools" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/Chapter03/primer" # Location of package manifests
+    schedule:
+      interval: "monthly"
