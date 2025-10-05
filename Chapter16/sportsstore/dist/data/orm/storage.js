@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddStorage = void 0;
+exports.AddStorage = AddStorage;
 const models_1 = require("./models");
 function AddStorage(Base) {
     return class extends Base {
@@ -34,4 +34,3 @@ function AddStorage(Base) {
         }
     };
 }
-exports.AddStorage = AddStorage;

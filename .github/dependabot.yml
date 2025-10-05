@@ -21,3 +21,8 @@ updates:
     directory: "/Chapter05/webapp" # Location of package manifests
     schedule:
       interval: "monthly"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/Chapter06/webapp" # Location of package manifests
+    schedule:
+      interval: "monthly"
+

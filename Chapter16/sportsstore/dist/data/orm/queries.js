@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddQueries = void 0;
+exports.AddQueries = AddQueries;
 const models_1 = require("./models");
 function AddQueries(Base) {
     return class extends Base {
@@ -25,4 +25,3 @@ function AddQueries(Base) {
         }
     };
 }
-exports.AddQueries = AddQueries;
