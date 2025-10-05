@@ -13,3 +13,11 @@ updates:
     directory: "/Chapter03/primer" # Location of package manifests
     schedule:
       interval: "monthly"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/Chapter04/webapp" # Location of package manifests
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/Chapter05/webapp" # Location of package manifests
+    schedule:
+      interval: "monthly"
