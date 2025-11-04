@@ -37,10 +37,25 @@ expressApp.get("/dynamic/:file", (req, resp) => {
     if (!/^[A-Za-z0-9_-]+$/.test(fileName)) {
         resp.status(400).send("Invalid template name");
         return;
+    }
     if (!allowedTemplates.includes(fileName)) {
         resp.status(404).send("Template not found");
         return;
     }
+    // Compute absolute resolved path of the template file
+    const templatePath = path.resolve(TEMPLATE_DIR, `${fileName}.handlebars`);
+    const realTemplateDir = fs.realpathSync(TEMPLATE_DIR);
+    let realTemplatePath;
+    try {
+        realTemplatePath = fs.realpathSync(templatePath);
+    } catch (err) {
+        resp.status(404).send("Template not found");
+        return;
+    }
+    // Ensure the resolved path is under TEMPLATE_DIR
+    if (!realTemplatePath.startsWith(realTemplateDir + path.sep)) {
+        resp.status(403).send("Forbidden");
+        return;
     }
     resp.render(`${fileName}.handlebars`,
         { message: "Hello template", req,
