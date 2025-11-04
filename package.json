@@ -2,13 +2,10 @@
   "name": "mastering-node.js",
   "version": "1.0.0",
   "description": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc-watch message.ts --onSuccess \"node message.js\"",
-    "go": "tsc message.ts && node message.js"
-  },
   "workspaces": [
-    "Chapter02/tools"
+    "Chapter02/tools",
+    "Chapter04/webapp",
+    "Chapter05/webapp"
   ],
   "keywords": [],
   "author": "",

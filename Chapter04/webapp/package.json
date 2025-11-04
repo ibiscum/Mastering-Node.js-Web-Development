@@ -1,10 +1,10 @@
 {
-  "name": "webapp",
+  "name": "ch04webapp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc-watch --onsuccess \"node dist/server.js\"",
+    "start": "tsc-watch --onsuccess \"node src/server.js\"",
     "deps:check": "npx npm-check-updates",
     "deps:upgrade": "npx npm-check-updates -u && npm install"
   },
@@ -17,6 +17,6 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@types/node": "^24.6.2"
+    "@types/node": "^24.10.0"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "webapp",
+  "name": "ch05webapp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,17 +12,17 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@eslint/js": "^9.37.0",
+    "@eslint/js": "^9.39.1",
     "@tsconfig/node20": "^20.1.6",
     "@types/escape-html": "^1.0.4",
-    "@types/express": "^5.0.3",
-    "eslint": "^9.37.0",
-    "globals": "^16.4.0",
+    "@types/express": "^5.0.5",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
     "tsc-watch": "^7.2.0",
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@types/node": "^24.6.2",
+    "@types/node": "^24.10.0",
     "escape-html": "^1.0.3",
     "express": "^5.1.0"
   }
