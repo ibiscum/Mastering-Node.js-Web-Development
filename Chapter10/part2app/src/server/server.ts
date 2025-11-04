@@ -1,5 +1,6 @@
 import { createServer } from "http";
 import express, {Express } from "express";
+import rateLimit from "express-rate-limit";
 import { testHandler } from "./testHandler";
 import httpProxy from "http-proxy";
 import helmet from "helmet";
@@ -16,6 +17,15 @@ const allowedTemplates = fs.readdirSync(TEMPLATE_DIR)
 
 const port = 5000;
 
+
+// Set up a rate limiter for expensive routes, e.g., dynamic template rendering
+const dynamicLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Limit each IP to 100 requests per windowMs
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+
 const expressApp: Express = express();
 
 const proxy = httpProxy.createProxyServer({
@@ -31,7 +41,7 @@ expressApp.set("view engine", "handlebars");
 expressApp.use(helmet());
 expressApp.use(express.json());
 
-expressApp.get("/dynamic/:file", (req, resp) => {
+expressApp.get("/dynamic/:file", dynamicLimiter, (req, resp) => {
     const fileName = req.params.file;
     // Allow only safe filenames: letters, numbers, underscores, hyphens
     if (!/^[A-Za-z0-9_-]+$/.test(fileName)) {
