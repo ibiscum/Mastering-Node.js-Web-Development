@@ -1,0 +1,24 @@
+{
+  "name": "mastering-node.js",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc-watch message.ts --onSuccess \"node message.js\"",
+    "go": "tsc message.ts && node message.js"
+  },
+  "workspaces": [
+    "Chapter02/tools"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "tsc-watch": "^7.2.0",
+    "typescript": "^5.9.3"
+  }
+}
