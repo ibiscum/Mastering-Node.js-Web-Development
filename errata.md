@@ -1,4 +1,4 @@
-# Errata for *Mastering Node.js Web Development*
+# Errata for _Mastering Node.js Web Development_
 
 This file contains errors that are likely to prevent the code examples from working as described in ths book. See [this](typos.md) file for small mistakes that I intend to correct in the next edition.
 

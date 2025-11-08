@@ -16,28 +16,28 @@ export const getSession = (req: Request): SessionData => (req as any).session;
 // }
 
 declare module "express-session" {
-    interface SessionData {
-       personalHistory: Result[];
-    }
+  interface SessionData {
+    personalHistory: Result[];
+  }
 }
 
 export const sessionMiddleware = () => {
+  const sequelize = new Sequelize({
+    dialect: "sqlite",
+    storage: "pkg_sessions.db",
+  });
 
-    const sequelize = new Sequelize({
-        dialect: "sqlite",
-        storage: "pkg_sessions.db"
-    });
+  const store = new (sessionStore(session.Store))({
+    db: sequelize,
+  });
 
-    const store = new (sessionStore(session.Store))({
-        db: sequelize
-    });
+  store.sync();
 
-    store.sync();
-
-    return session({
-        secret: "mysecret",
-        store: store,
-        cookie: { maxAge: 300 * 1000, sameSite: "strict", secure: true },
-        resave: false, saveUninitialized: false
-    })
-}
+  return session({
+    secret: "mysecret",
+    store: store,
+    cookie: { maxAge: 300 * 1000, sameSite: "strict", secure: true },
+    resave: false,
+    saveUninitialized: false,
+  });
+};

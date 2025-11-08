@@ -1,5 +1,5 @@
 import { CatalogRepository } from "./catalog_repository";
-import { CatalogRepoImpl} from "./orm";
+import { CatalogRepoImpl } from "./orm";
 import { OrderRepository } from "./order_repository";
 
 const repo = new CatalogRepoImpl();

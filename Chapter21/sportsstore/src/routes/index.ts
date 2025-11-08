@@ -5,11 +5,10 @@ import { createOrderRoutes } from "./orders";
 import { createAdminRoutes } from "./admin";
 
 export const createRoutes = (app: Express) => {
+  createCartMiddleware(app);
 
-    createCartMiddleware(app);
-
-    createCatalogRoutes(app);
-    createCartRoutes(app);
-    createOrderRoutes(app);
-    createAdminRoutes(app);
-}
+  createCatalogRoutes(app);
+  createCartRoutes(app);
+  createOrderRoutes(app);
+  createAdminRoutes(app);
+};

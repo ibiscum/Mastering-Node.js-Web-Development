@@ -1,36 +1,44 @@
-import { Model, CreationOptional, ForeignKey, InferAttributes, 
-    InferCreationAttributes  } from "sequelize";
+import {
+  Model,
+  CreationOptional,
+  ForeignKey,
+  InferAttributes,
+  InferCreationAttributes,
+} from "sequelize";
 
-export class ProductModel extends Model<InferAttributes<ProductModel>, 
-        InferCreationAttributes<ProductModel>> {
+export class ProductModel extends Model<
+  InferAttributes<ProductModel>,
+  InferCreationAttributes<ProductModel>
+> {
+  declare id?: CreationOptional<number>;
 
-    declare id?: CreationOptional<number>;
+  declare name: string;
+  declare description: string;
+  declare price: number;
 
-    declare name: string;
-    declare description: string;
-    declare price: number;
+  declare categoryId: ForeignKey<CategoryModel["id"]>;
+  declare supplierId: ForeignKey<SupplierModel["id"]>;
 
-    declare categoryId: ForeignKey<CategoryModel["id"]>;
-    declare supplierId: ForeignKey<SupplierModel["id"]>;
-
-    declare category?: InferAttributes<CategoryModel>
-    declare supplier?: InferAttributes<SupplierModel>
+  declare category?: InferAttributes<CategoryModel>;
+  declare supplier?: InferAttributes<SupplierModel>;
 }
 
-export class CategoryModel extends Model<InferAttributes<CategoryModel>, 
-        InferCreationAttributes<CategoryModel>>   {
+export class CategoryModel extends Model<
+  InferAttributes<CategoryModel>,
+  InferCreationAttributes<CategoryModel>
+> {
+  declare id?: CreationOptional<number>;
+  declare name: string;
 
-    declare id?: CreationOptional<number>;
-    declare name: string;
-    
-    declare products?:  InferAttributes<ProductModel>[];
+  declare products?: InferAttributes<ProductModel>[];
 }
 
-export class SupplierModel extends Model<InferAttributes<SupplierModel>, 
-        InferCreationAttributes<SupplierModel>>  {
+export class SupplierModel extends Model<
+  InferAttributes<SupplierModel>,
+  InferCreationAttributes<SupplierModel>
+> {
+  declare id?: CreationOptional<number>;
+  declare name: string;
 
-    declare id?: CreationOptional<number>;   
-    declare name: string;
-
-    declare products?:  InferAttributes<ProductModel>[];
+  declare products?: InferAttributes<ProductModel>[];
 }

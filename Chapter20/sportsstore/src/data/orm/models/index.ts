@@ -6,7 +6,7 @@ import { initializeOrderModels } from "./order_helpers";
 export { ProductModel, CategoryModel, SupplierModel } from "./catalog_models";
 
 export const initializeModels = (sequelize: Sequelize) => {
-    initializeCatalogModels(sequelize);
-    initializeCustomerModels(sequelize);
-    initializeOrderModels(sequelize);
-}
+  initializeCatalogModels(sequelize);
+  initializeCustomerModels(sequelize);
+  initializeOrderModels(sequelize);
+};

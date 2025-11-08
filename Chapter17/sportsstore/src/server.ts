@@ -13,10 +13,10 @@ const expressApp: Express = express();
 
 expressApp.use(helmet());
 expressApp.use(express.json());
-expressApp.use(express.urlencoded({extended: true}))
+expressApp.use(express.urlencoded({ extended: true }));
 
 expressApp.use(express.static("node_modules/bootstrap/dist"));
-expressApp.use('/icons', express.static("node_modules/bootstrap-icons/icons"));
+expressApp.use("/icons", express.static("node_modules/bootstrap-icons/icons"));
 
 createTemplates(expressApp);
 createSessions(expressApp);
@@ -26,5 +26,4 @@ createErrorHandlers(expressApp);
 
 const server = createServer(expressApp);
 
-server.listen(port, 
-    () => console.log(`HTTP Server listening on port ${port}`));
+server.listen(port, () => console.log(`HTTP Server listening on port ${port}`));

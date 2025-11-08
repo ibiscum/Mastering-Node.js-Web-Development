@@ -10,12 +10,18 @@ const location = getConfig("templates:location");
 const config = getConfig("templates:config");
 
 export const createTemplates = (app: Express) => {
-
-    app.set("views", location);
-    app.engine("handlebars", engine({
-        ...config, 
-        helpers: {...env_helpers, ...catalog_helpers, ...cart_helpers, 
-                    ...order_helpers}
-    }));
-    app.set("view engine", "handlebars");
-}
+  app.set("views", location);
+  app.engine(
+    "handlebars",
+    engine({
+      ...config,
+      helpers: {
+        ...env_helpers,
+        ...catalog_helpers,
+        ...cart_helpers,
+        ...order_helpers,
+      },
+    }),
+  );
+  app.set("view engine", "handlebars");
+};

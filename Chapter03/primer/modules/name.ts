@@ -1,7 +1,10 @@
 export class Name {
-    constructor(public first: string, public second: string) {}
+  constructor(
+    public first: string,
+    public second: string,
+  ) {}
 
-    get nameMessage() {
-        return `Hello ${this.first} ${this.second}`;
-    }
+  get nameMessage() {
+    return `Hello ${this.first} ${this.second}`;
+  }
 }

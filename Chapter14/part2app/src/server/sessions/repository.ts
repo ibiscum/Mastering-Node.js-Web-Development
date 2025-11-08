@@ -1,15 +1,14 @@
 export type Session = {
-    id: string,
-    data: { [key: string]: any }
-}
+  id: string;
+  data: { [key: string]: any };
+};
 
 export interface SessionRepository {
+  createSession(): Promise<Session>;
 
-    createSession() : Promise<Session>;
+  getSession(id: string): Promise<Session | undefined>;
 
-    getSession(id: string): Promise<Session | undefined>;
+  saveSession(session: Session, expires: Date): Promise<void>;
 
-    saveSession(session: Session, expires: Date): Promise<void>;
-
-    touchSession(session: Session, expires: Date) : Promise<void>
+  touchSession(session: Session, expires: Date): Promise<void>;
 }

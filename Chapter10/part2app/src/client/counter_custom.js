@@ -6,5 +6,5 @@ export const Counter = (context) => `
         Increment
     </button>
     <div>
-        ${ context.counter % 2 ? Odd(context) : Even(context) }
-    </div>`
+        ${context.counter % 2 ? Odd(context) : Even(context)}
+    </div>`;

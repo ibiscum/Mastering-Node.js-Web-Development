@@ -1,5 +1,5 @@
 import { createServer } from "http";
-import express, {Express } from "express";
+import express, { Express } from "express";
 import { testHandler } from "./testHandler.js";
 import httpProxy from "http-proxy";
 import helmet from "helmet";
@@ -9,7 +9,8 @@ const port = 5000;
 const expressApp: Express = express();
 
 const proxy = httpProxy.createProxyServer({
-    target: "http://localhost:5100", ws: true
+  target: "http://localhost:5100",
+  ws: true,
 });
 
 expressApp.use(helmet());
@@ -21,7 +22,6 @@ expressApp.use((req, resp) => proxy.web(req, resp));
 
 const server = createServer(expressApp);
 
-server.on('upgrade', (req, socket, head) => proxy.ws(req, socket, head));
+server.on("upgrade", (req, socket, head) => proxy.ws(req, socket, head));
 
-server.listen(port, 
-    () => console.log(`HTTP Server listening on port ${port}`));
+server.listen(port, () => console.log(`HTTP Server listening on port ${port}`));

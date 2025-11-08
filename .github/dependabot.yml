@@ -25,4 +25,3 @@ updates:
     directory: "/Chapter06/webapp" # Location of package manifests
     schedule:
       interval: "monthly"
-

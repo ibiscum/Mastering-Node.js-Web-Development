@@ -17,7 +17,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.3.8"
+    "bootstrap": "^5.3.8",
+    "prettier": "^3.6.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.10",

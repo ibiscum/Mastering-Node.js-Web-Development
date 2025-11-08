@@ -9,32 +9,39 @@ const config = getConfig("sessions");
 
 const secret = getSecret("COOKIE_SECRET");
 
-const logging = config.orm.logging 
-        ? { logging: console.log, logQueryParameters: true}
-        : { logging: false };
+const logging = config.orm.logging
+  ? { logging: console.log, logQueryParameters: true }
+  : { logging: false };
 
 export const createSessions = (app: Express) => {
+  const sequelize = new Sequelize({
+    ...config.orm.settings,
+    ...logging,
+  });
 
-    const sequelize = new Sequelize({
-        ...config.orm.settings, ...logging
-    });
+  const store = new (sessionStore(session.Store))({
+    db: sequelize,
+  });
 
-    const store = new (sessionStore(session.Store))({
-        db: sequelize
-    });
+  if (config.reset_db === true) {
+    sequelize.drop().then(() => store.sync());
+  } else {
+    store.sync();
+  }
 
-    if (config.reset_db === true) {
-        sequelize.drop().then(() => store.sync());
-    } else {
-        store.sync();
-    }
-
-    app.use(session({
-        secret, store,
-        resave: false, saveUninitialized: true,
-        cookie: { 
-            maxAge: config.maxAgeHrs * 60 * 60 * 1000, 
-            sameSite: false, httpOnly: true, secure: process.env.NODE_ENV === "production" }
-    }));    
-    app.use(lusca.csrf());
-}
+  app.use(
+    session({
+      secret,
+      store,
+      resave: false,
+      saveUninitialized: true,
+      cookie: {
+        maxAge: config.maxAgeHrs * 60 * 60 * 1000,
+        sameSite: false,
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+      },
+    }),
+  );
+  app.use(lusca.csrf());
+};

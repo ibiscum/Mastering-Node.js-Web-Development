@@ -3,9 +3,8 @@ import { createCatalogRoutes } from "./catalog";
 import { createCartMiddleware, createCartRoutes } from "./cart";
 
 export const createRoutes = (app: Express) => {
+  createCartMiddleware(app);
 
-    createCartMiddleware(app);
-
-    createCatalogRoutes(app);
-    createCartRoutes(app);
-}
+  createCatalogRoutes(app);
+  createCartRoutes(app);
+};

@@ -1,6 +1,6 @@
 import express, { Express } from "express";
 import csrf from "lusca";
-import repository  from "./data";
+import repository from "./data";
 import { getJsonCookie, setJsonCookie } from "./cookies";
 import cookieMiddleware from "cookie-parser";
 import { customSessionMiddleware } from "./sessions/middleware";
@@ -9,39 +9,45 @@ import { getSession, sessionMiddleware } from "./sessions/session_helpers";
 const rowLimit = 10;
 
 export const registerFormMiddleware = (app: Express) => {
-    app.use(express.urlencoded({extended: true}));
-    app.use(cookieMiddleware("mysecret"));
-    app.use(sessionMiddleware());
-    // If you use a custom session middleware, place here
-    app.use(csrf()); // Register CSRF *after* session and cookie, and *before* routes
-}
+  app.use(express.urlencoded({ extended: true }));
+  app.use(cookieMiddleware("mysecret"));
+  app.use(sessionMiddleware());
+  // If you use a custom session middleware, place here
+  app.use(csrf()); // Register CSRF *after* session and cookie, and *before* routes
+};
 
 export const registerFormRoutes = (app: Express) => {
-
-    app.get("/form", async (req, resp) => {
-        resp.render("age", {
-            history: await repository.getAllResults(rowLimit),
-            personalHistory: getSession(req).personalHistory,
-            csrfToken: req.csrfToken ? req.csrfToken() : ""
-        });
+  app.get("/form", async (req, resp) => {
+    resp.render("age", {
+      history: await repository.getAllResults(rowLimit),
+      personalHistory: getSession(req).personalHistory,
+      csrfToken: req.csrfToken ? req.csrfToken() : "",
     });
+  });
 
-    app.post("/form", async (req, resp) => {
-        const nextage = Number.parseInt(req.body.age) 
-            + Number.parseInt(req.body.years);
+  app.post("/form", async (req, resp) => {
+    const nextage =
+      Number.parseInt(req.body.age) + Number.parseInt(req.body.years);
 
-        await repository.saveResult({...req.body, nextage });
+    await repository.saveResult({ ...req.body, nextage });
 
-        req.session.personalHistory = [{
-            id: 0, name: req.body.name, age: req.body.age,
-            years: req.body.years, nextage}, 
-            ...(req.session.personalHistory || [])].splice(0, 5);
-        
-        const context = { 
-            ...req.body, nextage, 
-            history: await repository.getAllResults(rowLimit),
-            personalHistory: req.session.personalHistory
-        };
-        resp.render("age", context);   
-    });
-}
+    req.session.personalHistory = [
+      {
+        id: 0,
+        name: req.body.name,
+        age: req.body.age,
+        years: req.body.years,
+        nextage,
+      },
+      ...(req.session.personalHistory || []),
+    ].splice(0, 5);
+
+    const context = {
+      ...req.body,
+      nextage,
+      history: await repository.getAllResults(rowLimit),
+      personalHistory: req.session.personalHistory,
+    };
+    resp.render("age", context);
+  });
+};
