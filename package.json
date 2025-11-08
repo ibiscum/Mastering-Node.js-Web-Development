@@ -5,7 +5,13 @@
   "workspaces": [
     "Chapter02/tools",
     "Chapter04/webapp",
-    "Chapter05/webapp"
+    "Chapter05/webapp",
+    "Chapter06/webapp",
+    "Chapter07/webapp",
+    "Chapter08/webapp",
+    "Chapter09/part2app",
+    "Chapter10/part2app",
+    "Chapter11/part2app"
   ],
   "keywords": [],
   "author": "",

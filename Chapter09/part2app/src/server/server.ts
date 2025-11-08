@@ -1,6 +1,6 @@
 import { createServer } from "http";
 import express, {Express } from "express";
-import { testHandler } from "./testHandler";
+import { testHandler } from "./testHandler.js";
 import httpProxy from "http-proxy";
 import helmet from "helmet";
 

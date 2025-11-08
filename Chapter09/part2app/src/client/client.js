@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("btn").addEventListener("click", sendReq);
 });
 
-sendReq = async () => {
+let sendReq = async () => {
     const response = await fetch("/test", {
         method: "POST", body: JSON.stringify({message: "Hello, World"}), 
         headers: { "Content-Type": "application/json" }

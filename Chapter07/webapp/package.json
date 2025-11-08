@@ -1,14 +1,18 @@
 {
-  "name": "webapp",
+  "name": "ch07webapp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private":true,
+  "type": "module",
   "scripts": {
     "server": "tsc-watch --noClear --onsuccess \"node dist/server.js\"",
     "client": "webpack serve",
     "start": "npm-run-all --parallel server client",
     "deps:check": "npx npm-check-updates",
-    "deps:upgrade": "npx npm-check-updates -u && npm install"
+    "deps:upgrade": "npx npm-check-updates -u && npm install",
+    "lint": "eslint --fix",
+    "format": "prettier . --write"
   },
   "keywords": [],
   "author": "",
