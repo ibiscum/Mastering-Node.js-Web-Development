@@ -15,7 +15,7 @@
     "bootstrap": "^5.3.8",
     "connect-session-sequelize": "^8.0.3",
     "cookie-parser": "^1.4.7",
-    "express": "^5.1.0",
+    "express": "^5.2.0",
     "express-handlebars": "^8.0.4",
     "express-session": "^1.18.2",
     "handlebars": "^4.7.8",
