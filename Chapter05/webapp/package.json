@@ -22,7 +22,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@types/node": "^24.10.0",
+    "@types/node": "^25.0.3",
     "escape-html": "^1.0.3",
     "express": "^5.2.0"
   }
