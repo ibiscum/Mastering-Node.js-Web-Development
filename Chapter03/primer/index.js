@@ -1,6 +1,5 @@
-Object.defineProperty(exports, "__esModule", { value: true });
-import { Name, WeatherLocation } from "./modules";
-let name = new Name("Adam", "Freeman");
-let loc = new WeatherLocation("raining", "London");
+import { Name, WeatherLocation } from "./modules/index.js";
+const name = new Name("Adam", "Freeman");
+const loc = new WeatherLocation("raining", "London");
 console.log(name.nameMessage);
 console.log(loc.weatherMessage);

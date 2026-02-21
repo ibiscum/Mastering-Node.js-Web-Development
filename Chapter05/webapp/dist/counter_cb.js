@@ -1,14 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Count = void 0;
-const worker_threads_1 = require("worker_threads");
-const Count = (request, iterations, total, callback) => {
-    const worker = new worker_threads_1.Worker(__dirname + "/count_worker.js", {
+import { Worker } from "worker_threads";
+export const Count = (request, iterations, total, callback) => {
+    const worker = new Worker(__dirname + "/count_worker.js", {
         workerData: {
             iterations,
             total,
-            request
-        }
+            request,
+        },
     });
     worker.on("message", async (iter) => {
         callback(null, iter);
@@ -20,4 +17,3 @@ const Count = (request, iterations, total, callback) => {
         callback(err, true);
     });
 };
-exports.Count = Count;

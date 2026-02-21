@@ -1,8 +1,10 @@
 {
-  "name": "webapp",
+  "name": "ch08webapp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private":true,
+  "type": "module",
   "scripts": {
     "server": "tsc-watch --noClear --onsuccess \"node dist/server.js\"",
     "client": "webpack serve",

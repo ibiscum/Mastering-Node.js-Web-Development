@@ -4,7 +4,7 @@ import {
   newUrlHandler,
   defaultHandler,
   notFoundHandler,
-} from "./handler";
+} from "./handler.js";
 import { createServer as createHttpsServer } from "https";
 import { readFileSync } from "fs";
 import express, { Express } from "express";

@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { endPromise, writePromise } from "./promises";
+import { endPromise, writePromise } from "./promises.js";
 //import { Count } from "./counter_cb";
-import { Count } from "./count_promise";
+import { Count } from "./count_promise.js";
 
 const total = 2_000_000_000;
 const iterations = 15;

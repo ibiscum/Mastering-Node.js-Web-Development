@@ -1,7 +1,7 @@
 import { createServer } from "http";
 import express, { Express, Request, Response } from "express";
 import rateLimit from "express-rate-limit";
-import { readHandler } from "./readHandler";
+import { readHandler } from "./readHandler.js";
 
 const port = 5000;
 

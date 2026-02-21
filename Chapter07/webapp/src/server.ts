@@ -1,6 +1,6 @@
 import { createServer } from "http";
 import express, { Express } from "express";
-import { readHandler } from "./readHandler";
+import { readHandler } from "./readHandler.js";
 import cors from "cors";
 import httpProxy from "http-proxy";
 import helmet from "helmet";

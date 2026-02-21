@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type":"module",
+  "private":true,
   "scripts": {
-    "start": "tsc-watch --onsuccess \"node dist/server.js\"",
-    "deps:check": "npx npm-check-updates",
-    "deps:upgrade": "npx npm-check-updates -u && npm install"
+    "start": "tsc-watch --onsuccess \"node dist/server.js\""
   },
   "keywords": [],
   "author": "",

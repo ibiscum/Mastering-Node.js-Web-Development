@@ -1,36 +1,7 @@
 {
   "name": "mastering-node.js",
   "version": "1.0.0",
-  "description": "",
-  "workspaces": [
-    "Chapter02/tools",
-    "Chapter04/webapp",
-    "Chapter05/webapp",
-    "Chapter06/webapp",
-    "Chapter07/webapp",
-    "Chapter08/webapp",
-    "Chapter09/part2app",
-    "Chapter10/part2app",
-    "Chapter11/part2app",
-    "Chapter12/part2app",
-    "Chapter13/part2app",
-    "chapter14/ch14part2app",
-    "Chapter15/part2app"
-  ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bootstrap": "^5.3.8",
-    "prettier": "^3.6.2"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.39.1",
-    "@typescript-eslint/parser": "^8.46.3",
-    "eslint": "^9.39.1",
-    "nodemon": "^3.1.10",
-    "tsc-watch": "^7.2.0",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.3"
-  }
+  "private": true,
+  "type": "module",
+  "description": ""
 }

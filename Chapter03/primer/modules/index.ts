@@ -1,2 +1,2 @@
-export { Name } from "./name";
-export { WeatherLocation } from "./weather";
+export { Name } from "./name.js";
+export { WeatherLocation } from "./weather.js";

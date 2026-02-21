@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.readHandler = void 0;
-const readHandler = async (req, resp) => {
+export const readHandler = async (req, resp) => {
     if (req.headers["content-type"] == "application/json") {
         const payload = req.body;
         if (Array.isArray(payload)) {
@@ -17,7 +14,6 @@ const readHandler = async (req, resp) => {
         req.pipe(resp);
     }
 };
-exports.readHandler = readHandler;
 // const createFromJsonTransform = () => new Transform({
 //     readableObjectMode: true,
 //     transform(data, encoding, callback) {
