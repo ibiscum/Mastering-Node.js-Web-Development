@@ -17,7 +17,7 @@
     "@types/escape-html": "^1.0.4",
     "@types/express": "^5.0.6",
     "eslint": "^9.39.3",
-    "globals": "^16.5.0",
+    "globals": "^17.3.0",
     "tsc-watch": "^7.2.0",
     "typescript": "^5.9.3"
   },
