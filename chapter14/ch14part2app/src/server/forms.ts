@@ -18,10 +18,12 @@ export const registerFormMiddleware = (app: Express) => {
 
 export const registerFormRoutes = (app: Express) => {
   app.get("/form", async (req, resp) => {
+    const csrfToken = req.csrfToken ? req.csrfToken() : "";
+
     resp.render("age", {
       history: await repository.getAllResults(rowLimit),
       personalHistory: getSession(req).personalHistory,
-      csrfToken: req.csrfToken ? req.csrfToken() : "",
+      csrfToken,
     });
   });
 
@@ -39,11 +41,14 @@ export const registerFormRoutes = (app: Express) => {
         years: req.body.years,
         nextage,
       },
+    const csrfToken = req.csrfToken ? req.csrfToken() : "";
+
       ...(req.session.personalHistory || []),
     ].splice(0, 5);
 
     const context = {
       ...req.body,
+      csrfToken,
       nextage,
       history: await repository.getAllResults(rowLimit),
       personalHistory: req.session.personalHistory,
