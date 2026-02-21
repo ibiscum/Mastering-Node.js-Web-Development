@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "watch": "tsc-watch --noClear --onsuccess \"node dist/server.js\"",
-    "start": "nodemon --exec npm run watch"
+    "start": "nodemon --exec pnpm run watch"
   },
   "nodemonConfig": {
     "ext": "js,handlebars,json",
