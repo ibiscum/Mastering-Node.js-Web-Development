@@ -1,14 +1,14 @@
 import { readFileSync } from "fs";
 import { Database } from "sqlite3";
-import { Repository, Result } from "./repository";
+import { Repository, Result } from "./repository.js";
 import {
   queryAllSql,
   queryByNameSql,
   insertPerson,
   insertCalculation,
   insertResult,
-} from "./sql_queries";
-import { TransactionHelper } from "./sql_helpers";
+} from "./sql_queries.js";
+import { TransactionHelper } from "./sql_helpers.js";
 
 export class SqlRepository implements Repository {
   db: Database;
@@ -45,7 +45,7 @@ export class SqlRepository implements Repository {
     return this.executeQuery(queryByNameSql, { $name, $limit });
   }
 
-  executeQuery(sql: string, params: any): Promise<Result[]> {
+  executeQuery(sql: string, params: Record<string, unknown>): Promise<Result[]> {
     return new Promise<Result[]>((resolve, reject) => {
       this.db.all<Result>(sql, params, (err, rows) => {
         if (err == undefined) {

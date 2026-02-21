@@ -3,7 +3,7 @@ import express, { Express } from "express";
 import httpProxy from "http-proxy";
 import helmet from "helmet";
 import { engine } from "express-handlebars";
-import { registerFormMiddleware, registerFormRoutes } from "./forms";
+import { registerFormMiddleware, registerFormRoutes } from "./forms.js";
 
 const port = 5000;
 

@@ -11,7 +11,7 @@ export class SessionModel extends Model<
   InferCreationAttributes<SessionModel>
 > {
   declare id: string;
-  declare data: any;
+  declare data: Record<string, unknown>;
   declare expires: Date;
 }
 

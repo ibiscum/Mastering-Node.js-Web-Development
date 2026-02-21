@@ -1,4 +1,4 @@
-import { Session, SessionRepository } from "./repository";
+import { Session, SessionRepository } from "./repository.js";
 import { randomUUID } from "crypto";
 
 type SessionWrapper = {

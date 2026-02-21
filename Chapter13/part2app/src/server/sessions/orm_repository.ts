@@ -1,6 +1,6 @@
 import { Op, Sequelize } from "sequelize";
-import { Session, SessionRepository } from "./repository";
-import { SessionModel, initializeModel } from "./orm_models";
+import { Session, SessionRepository } from "./repository.js";
+import { SessionModel, initializeModel } from "./orm_models.js";
 import { randomUUID } from "crypto";
 
 export class OrmRepository implements SessionRepository {
@@ -31,7 +31,7 @@ export class OrmRepository implements SessionRepository {
       where: { id, expires: { [Op.gt]: new Date(Date.now()) } },
     });
     if (dbsession) {
-      return { id, data: dbsession.data };
+      return { id, data: dbsession.data as { [key: string]: string | number | boolean | null } };
     }
   }
 

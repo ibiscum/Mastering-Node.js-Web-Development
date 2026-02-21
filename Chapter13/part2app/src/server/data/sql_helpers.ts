@@ -1,9 +1,9 @@
 import { Database } from "sqlite3";
 
 export class TransactionHelper {
-  steps: [sql: string, params: any][] = [];
+  steps: [sql: string, params: Record<string, unknown>][] = [];
 
-  add(sql: string, params: any): TransactionHelper {
+  add(sql: string, params: Record<string, unknown>): TransactionHelper {
     this.steps.push([sql, params]);
     return this;
   }
@@ -12,7 +12,7 @@ export class TransactionHelper {
     return new Promise((resolve, reject) => {
       let index = 0;
       let lastRow: number = NaN;
-      const cb = (err: any, rowID?: number) => {
+      const cb = (err: Error | null, rowID?: number) => {
         if (err) {
           db.run("ROLLBACK", () => reject());
         } else {
@@ -28,9 +28,9 @@ export class TransactionHelper {
     });
   }
 
-  runStep(idx: number, db: Database, cb: (err: any, row: number) => void) {
+  runStep(idx: number, db: Database, cb: (err: Error | null, row: number) => void) {
     const [sql, params] = this.steps[idx];
-    db.run(sql, params, function (err: any) {
+    db.run(sql, params, function (err: Error | null) {
       cb(err, this.lastID);
     });
   }

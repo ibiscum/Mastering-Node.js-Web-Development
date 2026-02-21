@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
-import { SessionRepository, Session } from "./repository";
+import { SessionRepository } from "./repository.js";
 //import { MemoryRepository } from "./memory_repository";
-import { setCookie, getCookie } from "../cookies";
-import { OrmRepository } from "./orm_repository";
+import { setCookie, getCookie } from "../cookies.js";
+import { OrmRepository } from "./orm_repository.js";
 
 const session_cookie_name = "custom_session";
 const expiry_seconds = 300;
@@ -20,7 +20,7 @@ export const customSessionMiddleware = () => {
       (id ? await repo.getSession(id) : undefined) ??
       (await repo.createSession());
 
-    (req as any).session = session;
+    req.session = session;
 
     setCookie(resp, session_cookie_name, session.id, {
       maxAge: expiry_seconds * 1000,

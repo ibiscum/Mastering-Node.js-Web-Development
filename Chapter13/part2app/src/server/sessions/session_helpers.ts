@@ -3,7 +3,7 @@ import { Request } from "express";
 import session, { SessionData } from "express-session";
 import sessionStore from "connect-session-sequelize";
 import { Sequelize } from "sequelize";
-import { Result } from "../data/repository";
+import { Result } from "../data/repository.js";
 
 export const getSession = (req: Request): SessionData => (req as any).session;
 

@@ -1,6 +1,6 @@
 export type Session = {
   id: string;
-  data: { [key: string]: any };
+  data: { [key: string]: string | number | boolean | null };
 };
 
 export interface SessionRepository {

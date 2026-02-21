@@ -1,9 +1,9 @@
 import express, { Express } from "express";
-import repository from "./data";
-import { getJsonCookie, setJsonCookie } from "./cookies";
+import repository from "./data/index.js";
+import { getJsonCookie, setJsonCookie } from "./cookies.js";
 import cookieMiddleware from "cookie-parser";
-import { customSessionMiddleware } from "./sessions/middleware";
-import { getSession, sessionMiddleware } from "./sessions/session_helpers";
+import { customSessionMiddleware } from "./sessions/middleware.js";
+import { getSession, sessionMiddleware } from "./sessions/session_helpers.js";
 import lusca from "lusca";
 const rowLimit = 10;
 

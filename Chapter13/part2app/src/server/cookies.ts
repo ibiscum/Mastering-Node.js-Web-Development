@@ -19,7 +19,7 @@ export const setCookie = (
   });
 };
 
-export const setJsonCookie = (resp: Response, name: string, val: any) => {
+export const setJsonCookie = (resp: Response, name: string, val: unknown) => {
   setCookie(resp, name, JSON.stringify(val));
 };
 
@@ -27,7 +27,7 @@ export const getCookie = (req: Request, key: string): string | undefined => {
   return req.signedCookies[key];
 };
 
-export const getJsonCookie = (req: Request, key: string): any => {
+export const getJsonCookie = <T = unknown>(req: Request, key: string): T | undefined => {
   const cookie = getCookie(req, key);
   return cookie ? JSON.parse(cookie) : undefined;
 };
