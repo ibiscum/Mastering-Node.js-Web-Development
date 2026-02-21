@@ -1,6 +1,6 @@
 import { DataTypes, Sequelize } from "sequelize";
-import { Calculation, Person, ResultModel } from "./orm_models";
-import { Result } from "./repository";
+import { Calculation, Person, ResultModel } from "./orm_models.js";
+import { Result } from "./repository.js";
 
 const primaryKey = {
   id: {

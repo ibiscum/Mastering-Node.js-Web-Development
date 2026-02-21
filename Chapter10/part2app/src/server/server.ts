@@ -10,7 +10,7 @@ import * as helpers from "./template_helpers.js";
 import * as fs from "fs";
 import * as path from "path";
 
-const TEMPLATE_DIR = path.resolve(__dirname, "../../templates/server");
+const TEMPLATE_DIR = path.resolve(import.meta.dirname, "../../templates/server");
 const allowedTemplates = fs
   .readdirSync(TEMPLATE_DIR)
   .filter((name) => name.endsWith(".handlebars"))

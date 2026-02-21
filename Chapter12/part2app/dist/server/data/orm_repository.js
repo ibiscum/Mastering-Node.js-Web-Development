@@ -1,59 +1,59 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.OrmRepository = void 0;
-const sequelize_1 = require("sequelize");
-const orm_helpers_1 = require("./orm_helpers");
-const orm_models_1 = require("./orm_models");
-class OrmRepository {
+import { Sequelize } from "sequelize";
+import { addSeedData, defineRelationships, fromOrmModel, initializeModels, } from "./orm_helpers.js";
+import { Calculation, Person, ResultModel } from "./orm_models.js";
+export class OrmRepository {
     sequelize;
     constructor() {
-        this.sequelize = new sequelize_1.Sequelize({
+        this.sequelize = new Sequelize({
             dialect: "sqlite",
             storage: "orm_age.db",
             logging: console.log,
-            logQueryParameters: true
+            logQueryParameters: true,
         });
         this.initModelAndDatabase();
     }
     async initModelAndDatabase() {
-        (0, orm_helpers_1.initializeModels)(this.sequelize);
-        (0, orm_helpers_1.defineRelationships)();
+        initializeModels(this.sequelize);
+        defineRelationships();
         await this.sequelize.drop();
         await this.sequelize.sync();
-        await (0, orm_helpers_1.addSeedData)(this.sequelize);
+        await addSeedData(this.sequelize);
     }
     async saveResult(r) {
         return await this.sequelize.transaction(async (tx) => {
-            const [person] = await orm_models_1.Person.findOrCreate({
+            const [person] = await Person.findOrCreate({
                 where: { name: r.name },
-                transaction: tx
+                transaction: tx,
             });
-            const [calculation] = await orm_models_1.Calculation.findOrCreate({
+            const [calculation] = await Calculation.findOrCreate({
                 where: {
-                    age: r.age, years: r.years, nextage: r.nextage
+                    age: r.age,
+                    years: r.years,
+                    nextage: r.nextage,
                 },
-                transaction: tx
+                transaction: tx,
             });
-            return (await orm_models_1.ResultModel.create({
-                personId: person.id, calculationId: calculation.id
+            return (await ResultModel.create({
+                personId: person.id,
+                calculationId: calculation.id,
             }, { transaction: tx })).id;
         });
     }
     async getAllResults(limit) {
-        return (await orm_models_1.ResultModel.findAll({
-            include: [orm_models_1.Person, orm_models_1.Calculation],
+        return (await ResultModel.findAll({
+            include: [Person, Calculation],
             limit,
-            order: [["id", "DESC"]]
-        })).map(row => (0, orm_helpers_1.fromOrmModel)(row));
+            order: [["id", "DESC"]],
+        })).map((row) => fromOrmModel(row));
     }
     async getResultsByName(name, limit) {
-        return (await orm_models_1.ResultModel.findAll({
-            include: [orm_models_1.Person, orm_models_1.Calculation],
+        return (await ResultModel.findAll({
+            include: [Person, Calculation],
             where: {
-                "$Person.name$": name
+                "$Person.name$": name,
             },
-            limit, order: [["id", "DESC"]]
-        })).map(row => (0, orm_helpers_1.fromOrmModel)(row));
+            limit,
+            order: [["id", "DESC"]],
+        })).map((row) => fromOrmModel(row));
     }
 }
-exports.OrmRepository = OrmRepository;

@@ -1,14 +1,14 @@
 import { readFileSync } from "fs";
 import { Database } from "sqlite3";
-import { Repository, Result } from "./repository";
+import { Repository, Result } from "./repository.js";
 import {
   queryAllSql,
   queryByNameSql,
   insertPerson,
   insertCalculation,
   insertResult,
-} from "./sql_queries";
-import { TransactionHelper } from "./sql_helpers";
+} from "./sql_queries.js";
+import { TransactionHelper } from "./sql_helpers.js";
 
 export class SqlRepository implements Repository {
   db: Database;

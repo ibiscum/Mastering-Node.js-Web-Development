@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.TransactionHelper = void 0;
-class TransactionHelper {
+export class TransactionHelper {
     steps = [];
     add(sql, params) {
         this.steps.push([sql, params]);
@@ -35,4 +32,3 @@ class TransactionHelper {
         });
     }
 }
-exports.TransactionHelper = TransactionHelper;

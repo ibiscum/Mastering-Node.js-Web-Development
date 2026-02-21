@@ -1,11 +1,11 @@
 import { createServer } from "http";
 import express, { Express } from "express";
-import { testHandler } from "./testHandler";
+import { testHandler } from "./testHandler.js";
 import httpProxy from "http-proxy";
 import helmet from "helmet";
 import { engine } from "express-handlebars";
-import * as helpers from "./template_helpers";
-import { registerFormMiddleware, registerFormRoutes } from "./forms";
+import * as helpers from "./template_helpers.js";
+import { registerFormMiddleware, registerFormRoutes } from "./forms.js";
 
 const port = 5000;
 

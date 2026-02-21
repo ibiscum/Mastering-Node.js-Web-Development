@@ -1,12 +1,12 @@
 import { Sequelize } from "sequelize";
-import { Repository, Result } from "./repository";
+import { Repository, Result } from "./repository.js";
 import {
   addSeedData,
   defineRelationships,
   fromOrmModel,
   initializeModels,
-} from "./orm_helpers";
-import { Calculation, Person, ResultModel } from "./orm_models";
+} from "./orm_helpers.js";
+import { Calculation, Person, ResultModel } from "./orm_models.js";
 
 export class OrmRepository implements Repository {
   sequelize: Sequelize;

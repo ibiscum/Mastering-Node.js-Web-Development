@@ -1,5 +1,5 @@
 import express, { Express } from "express";
-import { getValidationResults, validate } from "./validation";
+import { getValidationResults, validate } from "./validation.js";
 
 export const registerFormMiddleware = (app: Express) => {
   app.use(express.urlencoded({ extended: true }));
@@ -25,7 +25,7 @@ export const registerFormRoutes = (app: Express) => {
   );
 };
 
-const pass = (valid: any, propname: string, test: string) => {
-  let propResult = valid?.results?.[propname];
+const pass = (valid: { results?: Record<string, Record<string, boolean>> }, propname: string, test: string) => {
+  const propResult = valid?.results?.[propname];
   return `display:${!propResult || propResult[test] ? "none" : "block"}`;
 };

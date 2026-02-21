@@ -1,5 +1,5 @@
 import express, { Express } from "express";
-import repository from "./data";
+import repository from "./data/index.js";
 
 const rowLimit = 10;
 

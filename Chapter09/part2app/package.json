@@ -8,9 +8,7 @@
   "scripts": {
     "server": "tsc-watch --noClear --onsuccess \"node dist/server/server.js\"",
     "client": "webpack serve",
-    "start": "npm-run-all --parallel server client",
-    "deps:check": "npx npm-check-updates",
-    "deps:upgrade": "npx npm-check-updates -u && npm install",
+    "start": "pnpm run server & pnpm run client",
     "lint": "eslint --fix"
   },
   "keywords": [],
@@ -27,6 +25,7 @@
     "@tsconfig/node24": "^24.0.3",
     "@types/express": "^5.0.5",
     "@types/node": "^24.10.1",
+    "baseline-browser-mapping": "^2.10.0",
     "eslint": "^9.39.1",
     "eslint-plugin-vue": "^10.6.1",
     "globals": "^16.5.0",

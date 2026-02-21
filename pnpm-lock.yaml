@@ -68,33 +68,33 @@ importers:
   Chapter06/webapp:
     dependencies:
       '@types/node':
-        specifier: ^24.6.2
-        version: 24.10.13
+        specifier: ^25.1.0
+        version: 25.3.0
       bootstrap:
         specifier: ^5.3.8
         version: 5.3.8(@popperjs/core@2.11.8)
       express:
-        specifier: ^5.1.0
+        specifier: ^5.2.0
         version: 5.2.1
       express-rate-limit:
         specifier: ^8.1.0
         version: 8.2.1(express@5.2.1)
     devDependencies:
       '@eslint/js':
-        specifier: ^9.39.1
+        specifier: ^9.39.2
         version: 9.39.3
       '@tsconfig/node20':
-        specifier: ^20.1.6
+        specifier: ^20.1.8
         version: 20.1.9
       '@types/express':
-        specifier: ^5.0.3
+        specifier: ^5.0.6
         version: 5.0.6
       eslint:
         specifier: ^9.39.1
         version: 9.39.3
       globals:
-        specifier: ^16.5.0
-        version: 16.5.0
+        specifier: ^17.3.0
+        version: 17.3.0
       tsc-watch:
         specifier: ^7.2.0
         version: 7.2.0(typescript@5.9.3)
@@ -114,7 +114,7 @@ importers:
         specifier: ^2.8.5
         version: 2.8.6
       express:
-        specifier: ^5.1.0
+        specifier: ^5.2.1
         version: 5.2.1
       helmet:
         specifier: ^8.1.0
@@ -151,7 +151,7 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       webpack:
-        specifier: ^5.102.0
+        specifier: ^5.105.2
         version: 5.105.2(webpack-cli@6.0.1)
       webpack-cli:
         specifier: ^6.0.1
@@ -172,7 +172,7 @@ importers:
         specifier: ^2.8.5
         version: 2.8.6
       express:
-        specifier: ^5.1.0
+        specifier: ^5.2.0
         version: 5.2.1
       express-rate-limit:
         specifier: ^8.1.0
@@ -203,7 +203,7 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       webpack:
-        specifier: ^5.102.0
+        specifier: ^5.104.1
         version: 5.105.2(webpack-cli@6.0.1)
       webpack-cli:
         specifier: ^6.0.1
@@ -218,7 +218,7 @@ importers:
         specifier: ^5.3.8
         version: 5.3.8(@popperjs/core@2.11.8)
       express:
-        specifier: ^5.1.0
+        specifier: ^5.2.0
         version: 5.2.1
       helmet:
         specifier: ^8.1.0
@@ -239,6 +239,9 @@ importers:
       '@types/node':
         specifier: ^24.10.1
         version: 24.10.13
+      baseline-browser-mapping:
+        specifier: ^2.10.0
+        version: 2.10.0
       eslint:
         specifier: ^9.39.1
         version: 9.39.3
@@ -258,7 +261,7 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       webpack:
-        specifier: ^5.103.0
+        specifier: ^5.104.1
         version: 5.105.2(webpack-cli@6.0.1)
       webpack-cli:
         specifier: ^6.0.1
@@ -273,7 +276,7 @@ importers:
         specifier: ^5.3.8
         version: 5.3.8(@popperjs/core@2.11.8)
       express:
-        specifier: ^5.1.0
+        specifier: ^5.2.0
         version: 5.2.1
       express-handlebars:
         specifier: ^8.0.4
@@ -328,7 +331,7 @@ importers:
         specifier: ^8.48.0
         version: 8.56.0(eslint@9.39.3)(typescript@5.9.3)
       webpack:
-        specifier: ^5.103.0
+        specifier: ^5.104.1
         version: 5.105.2(webpack-cli@6.0.1)
       webpack-cli:
         specifier: ^6.0.1
@@ -343,10 +346,10 @@ importers:
         specifier: ^5.3.8
         version: 5.3.8(@popperjs/core@2.11.8)
       express:
-        specifier: ^5.1.0
+        specifier: ^5.2.1
         version: 5.2.1
       express-handlebars:
-        specifier: ^8.0.4
+        specifier: ^8.0.6
         version: 8.0.6
       handlebars:
         specifier: ^4.7.8
@@ -361,29 +364,29 @@ importers:
         specifier: ^2.0.2
         version: 2.0.2
       validator:
-        specifier: ^13.15.23
+        specifier: ^13.15.26
         version: 13.15.26
     devDependencies:
       '@eslint/js':
-        specifier: ^9.39.1
+        specifier: ^9.39.3
         version: 9.39.3
       '@tsconfig/node20':
-        specifier: ^20.1.8
+        specifier: ^20.1.9
         version: 20.1.9
       '@types/express':
-        specifier: ^5.0.5
+        specifier: ^5.0.6
         version: 5.0.6
       '@types/multer':
         specifier: ^2.0.0
         version: 2.0.0
       '@types/node':
-        specifier: ^24.10.1
+        specifier: ^24.10.13
         version: 24.10.13
       '@types/validator':
         specifier: ^13.15.10
         version: 13.15.10
       eslint:
-        specifier: ^9.39.1
+        specifier: ^9.39.3
         version: 9.39.3
       globals:
         specifier: ^16.5.0
@@ -401,16 +404,16 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       typescript-eslint:
-        specifier: ^8.48.0
+        specifier: ^8.56.0
         version: 8.56.0(eslint@9.39.3)(typescript@5.9.3)
       webpack:
-        specifier: ^5.103.0
+        specifier: ^5.105.2
         version: 5.105.2(webpack-cli@6.0.1)
       webpack-cli:
         specifier: ^6.0.1
         version: 6.0.1(webpack-dev-server@5.2.3)(webpack@5.105.2)
       webpack-dev-server:
-        specifier: ^5.2.2
+        specifier: ^5.2.3
         version: 5.2.3(tslib@2.8.1)(webpack-cli@6.0.1)(webpack@5.105.2)
 
   Chapter12/part2app:
@@ -422,7 +425,7 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3
       express:
-        specifier: ^5.1.0
+        specifier: ^5.2.0
         version: 5.2.1
       express-handlebars:
         specifier: ^8.0.4
@@ -489,7 +492,7 @@ importers:
         specifier: ^8.48.0
         version: 8.56.0(eslint@9.39.3)(typescript@5.9.3)
       webpack:
-        specifier: ^5.103.0
+        specifier: ^5.104.1
         version: 5.105.2(webpack-cli@6.0.1)
       webpack-cli:
         specifier: ^6.0.1
@@ -513,7 +516,7 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3
       express:
-        specifier: ^5.1.0
+        specifier: ^5.2.0
         version: 5.2.1
       express-handlebars:
         specifier: ^8.0.4
@@ -592,7 +595,7 @@ importers:
         specifier: ^8.48.0
         version: 8.56.0(eslint@9.39.3)(typescript@5.9.3)
       webpack:
-        specifier: ^5.103.0
+        specifier: ^5.104.1
         version: 5.105.2(webpack-cli@6.0.1)
       webpack-cli:
         specifier: ^6.0.1
@@ -625,7 +628,7 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3
       express:
-        specifier: ^5.1.0
+        specifier: ^5.2.0
         version: 5.2.1
       express-handlebars:
         specifier: ^8.0.4
@@ -719,7 +722,7 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       webpack:
-        specifier: ^5.103.0
+        specifier: ^5.104.1
         version: 5.105.2(webpack-cli@6.0.1)
       webpack-cli:
         specifier: ^6.0.1
@@ -847,7 +850,7 @@ importers:
         specifier: ^16.4.4
         version: 16.6.1
       express:
-        specifier: ^4.21.2
+        specifier: ^4.22.1
         version: 4.22.1
       express-async-errors:
         specifier: ^3.1.1
@@ -874,7 +877,7 @@ importers:
         specifier: ^5.1.6
         version: 5.1.7
       validator:
-        specifier: ^13.15.20
+        specifier: ^13.15.23
         version: 13.15.26
     devDependencies:
       '@tsconfig/node20':
@@ -920,7 +923,7 @@ importers:
         specifier: ^16.4.4
         version: 16.6.1
       express:
-        specifier: ^4.21.2
+        specifier: ^4.22.1
         version: 4.22.1
       express-async-errors:
         specifier: ^3.1.1
@@ -953,7 +956,7 @@ importers:
         specifier: ^5.1.6
         version: 5.1.7
       validator:
-        specifier: ^13.15.20
+        specifier: ^13.15.23
         version: 13.15.26
     devDependencies:
       '@tsconfig/node20':
@@ -1008,7 +1011,7 @@ importers:
         specifier: ^17.2.2
         version: 17.3.1
       express:
-        specifier: ^5.1.0
+        specifier: ^5.2.1
         version: 5.2.1
       express-handlebars:
         specifier: ^8.0.3
@@ -1044,7 +1047,7 @@ importers:
         specifier: ^5.1.7
         version: 5.1.7
       validator:
-        specifier: ^13.15.20
+        specifier: ^13.15.23
         version: 13.15.26
     devDependencies:
       '@eslint/js':
@@ -1096,7 +1099,7 @@ importers:
         specifier: ^8.44.0
         version: 8.56.0(eslint@9.39.3)(typescript@5.9.3)
       webpack:
-        specifier: ^5.101.3
+        specifier: ^5.105.2
         version: 5.105.2(webpack-cli@6.0.1)
       webpack-cli:
         specifier: ^6.0.1
@@ -1120,7 +1123,7 @@ importers:
         specifier: ^16.4.4
         version: 16.6.1
       express:
-        specifier: ^4.21.2
+        specifier: ^4.22.1
         version: 4.22.1
       express-async-errors:
         specifier: ^3.1.1
@@ -1168,7 +1171,7 @@ importers:
         specifier: ^5.1.6
         version: 5.1.7
       validator:
-        specifier: ^13.15.20
+        specifier: ^13.15.23
         version: 13.15.26
     devDependencies:
       '@tsconfig/node20':
@@ -1208,7 +1211,7 @@ importers:
         specifier: ^5.2.2
         version: 5.9.3
       webpack:
-        specifier: ^5.101.3
+        specifier: ^5.105.2
         version: 5.105.2(webpack-cli@5.1.4)
       webpack-cli:
         specifier: ^5.1.4
@@ -1748,6 +1751,9 @@ packages:
 
   '@types/node@24.10.13':
     resolution: {integrity: sha512-oH72nZRfDv9lADUBSo104Aq7gPHpQZc4BTx38r9xf9pg5LfP6EzSyH2n7qFmmxRQXh7YlUXODcYsg6PuTDSxGg==}
+
+  '@types/node@25.3.0':
+    resolution: {integrity: sha512-4K3bqJpXpqfg2XKGK9bpDTc6xO/xoUP/RBWS7AtRMug6zZFaRekiLzjVtAoZMquxoAbzBvy5nxQ7veS5eYzf8A==}
 
   '@types/oauth@0.9.6':
     resolution: {integrity: sha512-H9TRCVKBNOhZZmyHLqFt9drPM9l+ShWiqqJijU1B8P3DX3ub84NjxDuy+Hjrz+fEca5Kwip3qPMKNyiLgNJtIA==}
@@ -2909,6 +2915,10 @@ packages:
 
   globals@16.5.0:
     resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
+    engines: {node: '>=18'}
+
+  globals@17.3.0:
+    resolution: {integrity: sha512-yMqGUQVVCkD4tqjOJf3TnrvaaHDMYp4VlUSObbkIiuCPe/ofdMBFIAcBbCSRFWOnos6qRiTVStDwqPLUclaxIw==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -4555,6 +4565,9 @@ packages:
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
+  undici-types@7.18.2:
+    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
+
   unique-filename@1.1.1:
     resolution: {integrity: sha512-Vmp0jIp2ln35UTXuryvjzkjGdRyf9b2lTXuSYUiPmzRcl3FDtYqAwOnTJkAngD9SWhnoJzDbTKwaOrZ+STtxNQ==}
 
@@ -5427,13 +5440,17 @@ snapshots:
     dependencies:
       undici-types: 7.16.0
 
+  '@types/node@25.3.0':
+    dependencies:
+      undici-types: 7.18.2
+
   '@types/oauth@0.9.6':
     dependencies:
-      '@types/node': 20.19.33
+      '@types/node': 24.10.13
 
   '@types/passport-google-oauth20@2.0.17':
     dependencies:
-      '@types/express': 4.17.25
+      '@types/express': 5.0.6
       '@types/passport': 1.0.17
       '@types/passport-oauth2': 1.8.0
 
@@ -5450,7 +5467,7 @@ snapshots:
 
   '@types/passport-oauth2@1.8.0':
     dependencies:
-      '@types/express': 4.17.25
+      '@types/express': 5.0.6
       '@types/oauth': 0.9.6
       '@types/passport': 1.0.17
 
@@ -6831,6 +6848,8 @@ snapshots:
   globals@14.0.0: {}
 
   globals@16.5.0: {}
+
+  globals@17.3.0: {}
 
   globalthis@1.0.4:
     dependencies:
@@ -8619,6 +8638,8 @@ snapshots:
   undici-types@6.21.0: {}
 
   undici-types@7.16.0: {}
+
+  undici-types@7.18.2: {}
 
   unique-filename@1.1.1:
     dependencies:
