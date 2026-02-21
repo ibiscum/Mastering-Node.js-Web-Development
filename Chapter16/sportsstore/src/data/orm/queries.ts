@@ -1,5 +1,5 @@
-import { CategoryModel, ProductModel, SupplierModel } from "./models";
-import { BaseRepo, Constructor } from "./core";
+import { CategoryModel, ProductModel, SupplierModel } from "./models/index.js";
+import { BaseRepo, Constructor } from "./core.js";
 
 export function AddQueries<TBase extends Constructor<BaseRepo>>(Base: TBase) {
   return class extends Base {

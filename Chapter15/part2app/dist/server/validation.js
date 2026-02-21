@@ -13,9 +13,8 @@ const validate = (propName) => {
             vreq.validation = { results: {}, valid: true };
         }
         vreq.validation.results[propName] = { valid: true };
-        Object.keys(tests).forEach(k => {
-            let valid = vreq.validation.results[propName][k]
-                = tests[k](req.body?.[propName]);
+        Object.keys(tests).forEach((k) => {
+            let valid = (vreq.validation.results[propName][k] = tests[k](req.body?.[propName]));
             if (!valid) {
                 vreq.validation.results[propName].valid = false;
                 vreq.validation.valid = false;

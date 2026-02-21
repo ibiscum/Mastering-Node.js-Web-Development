@@ -16,7 +16,7 @@ const configurePassport = (config) => {
     }));
     passport_1.default.use(new passport_jwt_1.Strategy({
         jwtFromRequest: passport_jwt_1.ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: config.jwt_secret
+        secretOrKey: config.jwt_secret,
     }, (payload, callback) => {
         return callback(null, { username: payload.username });
     }));

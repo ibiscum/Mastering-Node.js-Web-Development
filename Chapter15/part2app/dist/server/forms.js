@@ -9,11 +9,13 @@ const data_1 = __importDefault(require("./data"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const session_helpers_1 = require("./sessions/session_helpers");
 const auth_1 = require("./auth");
+const lusca_1 = __importDefault(require("lusca"));
 const rowLimit = 10;
 const registerFormMiddleware = (app) => {
     app.use(express_1.default.urlencoded({ extended: true }));
     app.use((0, cookie_parser_1.default)("mysecret"));
     app.use((0, session_helpers_1.sessionMiddleware)());
+    app.use(lusca_1.default.csrf());
 };
 exports.registerFormMiddleware = registerFormMiddleware;
 const registerFormRoutes = (app) => {
@@ -27,8 +29,7 @@ const registerFormRoutes = (app) => {
         resp.end();
     });
     app.post("/form/add", (0, auth_1.roleGuard)("Users"), async (req, resp) => {
-        const nextage = Number.parseInt(req.body["age"])
-            + Number.parseInt(req.body["years"]);
+        const nextage = Number.parseInt(req.body["age"]) + Number.parseInt(req.body["years"]);
         await data_1.default.saveResult({ ...req.body, nextage });
         resp.redirect("/form");
         resp.end();

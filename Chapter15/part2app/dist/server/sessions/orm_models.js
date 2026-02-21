@@ -9,7 +9,7 @@ const initializeModel = (sequelize) => {
     SessionModel.init({
         id: { type: sequelize_1.DataTypes.STRING, primaryKey: true },
         data: { type: sequelize_1.DataTypes.JSON },
-        expires: { type: sequelize_1.DataTypes.DATE }
+        expires: { type: sequelize_1.DataTypes.DATE },
     }, { sequelize });
 };
 exports.initializeModel = initializeModel;

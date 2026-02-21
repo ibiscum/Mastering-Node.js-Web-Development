@@ -11,7 +11,7 @@ class OrmRepository {
             dialect: "sqlite",
             storage: "orm_sessions.db",
             logging: console.log,
-            logQueryParameters: true
+            logQueryParameters: true,
         });
         this.initModelAndDatabase();
     }
@@ -25,7 +25,7 @@ class OrmRepository {
     }
     async getSession(id) {
         const dbsession = await orm_models_1.SessionModel.findOne({
-            where: { id, expires: { [sequelize_1.Op.gt]: new Date(Date.now()) } }
+            where: { id, expires: { [sequelize_1.Op.gt]: new Date(Date.now()) } },
         });
         if (dbsession) {
             return { id, data: dbsession.data };
@@ -35,7 +35,7 @@ class OrmRepository {
         await orm_models_1.SessionModel.upsert({
             id: session.id,
             data: session.data,
-            expires
+            expires,
         });
     }
     async touchSession(session, expires) {

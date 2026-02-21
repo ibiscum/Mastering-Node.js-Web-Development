@@ -1,6 +1,6 @@
-import { WebService } from "./http_adapter";
-import { validate, validateIdProperty } from "./validation_functions";
-import { WebServiceValidation } from "./validation_types";
+import { WebService } from "./http_adapter.js";
+import { validate, validateIdProperty } from "./validation_functions.js";
+import { WebServiceValidation } from "./validation_types.js";
 
 export class Validator<T> implements WebService<T> {
   constructor(

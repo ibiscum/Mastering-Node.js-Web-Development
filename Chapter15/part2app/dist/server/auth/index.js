@@ -17,25 +17,24 @@ const createAuth = (app) => {
             // username: req.query["username"],
             // password: req.query["password"],
             failed: req.query["failed"] ? true : false,
-            signinpage: true
+            signinpage: true,
         };
         resp.render("signin", data);
     });
     app.post("/signin", passport_1.default.authenticate("local", {
         failureRedirect: `/signin?failed=1`,
-        successRedirect: "/"
+        successRedirect: "/",
     }));
     app.use(passport_1.default.authenticate("session"), (req, resp, next) => {
         resp.locals.user = req.user;
-        resp.locals.authenticated
-            = req.authenticated = req.user !== undefined;
+        resp.locals.authenticated = req.authenticated = req.user !== undefined;
         next();
     });
     app.post("/api/signin", async (req, resp) => {
         const username = req.body.username;
         const password = req.body.password;
         const result = {
-            success: await store.validateCredentials(username, password)
+            success: await store.validateCredentials(username, password),
         };
         if (result.success) {
             result.token = jsonwebtoken_1.default.sign({ username }, jwt_secret, { expiresIn: "1hr" });
@@ -57,8 +56,8 @@ const roleGuard = (role) => {
     return async (req, resp, next) => {
         if (req.authenticated) {
             const username = req.user?.username;
-            if (username != undefined
-                && await store.validateMembership(username, role)) {
+            if (username != undefined &&
+                (await store.validateMembership(username, role))) {
                 next();
                 return;
             }

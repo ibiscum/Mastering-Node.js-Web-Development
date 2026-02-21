@@ -1,7 +1,7 @@
-import { CatalogRepository } from "../catalog_repository";
-import { BaseRepo } from "./core";
-import { AddQueries } from "./queries";
-import { AddStorage } from "./storage";
+import { CatalogRepository } from "../catalog_repository.js";
+import { BaseRepo } from "./core.js";
+import { AddQueries } from "./queries.js";
+import { AddStorage } from "./storage.js";
 
 const RepoWithQueries = AddQueries(BaseRepo);
 const CompleteRepo = AddStorage(RepoWithQueries);

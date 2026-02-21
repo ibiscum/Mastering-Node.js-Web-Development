@@ -6,10 +6,10 @@ const characterMappings = {
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
-    "\"": "&quot;",
+    '"': "&quot;",
     "=": "&#x3D;",
     "'": "&#x27;",
-    "`": "&#x60;"
+    "`": "&#x60;",
 };
-const santizeValue = (value) => value?.replace(matchPattern, match => characterMappings[match]);
+const santizeValue = (value) => value?.replace(matchPattern, (match) => characterMappings[match]);
 exports.santizeValue = santizeValue;

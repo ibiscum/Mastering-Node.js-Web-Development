@@ -1,26 +1,26 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddQueries = AddQueries;
-const models_1 = require("./models");
-function AddQueries(Base) {
+import { CategoryModel, ProductModel, SupplierModel } from "./models/index.js";
+export function AddQueries(Base) {
     return class extends Base {
         getProducts() {
-            return models_1.ProductModel.findAll({
+            return ProductModel.findAll({
                 include: [
-                    { model: models_1.SupplierModel, as: "supplier" },
-                    { model: models_1.CategoryModel, as: "category" }
+                    { model: SupplierModel, as: "supplier" },
+                    { model: CategoryModel, as: "category" },
                 ],
-                raw: true, nest: true
+                raw: true,
+                nest: true,
             });
         }
         getCategories() {
-            return models_1.CategoryModel.findAll({
-                raw: true, nest: true
+            return CategoryModel.findAll({
+                raw: true,
+                nest: true,
             });
         }
         getSuppliers() {
-            return models_1.SupplierModel.findAll({
-                raw: true, nest: true
+            return SupplierModel.findAll({
+                raw: true,
+                nest: true,
             });
         }
     };

@@ -676,6 +676,9 @@ importers:
       '@types/express-session':
         specifier: ^1.18.2
         version: 1.18.2
+      '@types/lusca':
+        specifier: ^1.7.5
+        version: 1.7.5
       '@types/multer':
         specifier: ^2.0.0
         version: 2.0.0
@@ -840,13 +843,13 @@ importers:
         specifier: ^5.3.8
         version: 5.3.8(@popperjs/core@2.11.8)
       express:
-        specifier: ^5.1.0
+        specifier: ^5.2.1
         version: 5.2.1
       express-async-errors:
         specifier: ^3.1.1
         version: 3.1.1(express@5.2.1)
       express-handlebars:
-        specifier: ^8.0.3
+        specifier: ^8.0.6
         version: 8.0.6
       handlebars:
         specifier: ^4.7.8
@@ -862,16 +865,16 @@ importers:
         version: 5.1.7
     devDependencies:
       '@tsconfig/node20':
-        specifier: ^20.1.6
+        specifier: ^20.1.9
         version: 20.1.9
       '@types/express':
-        specifier: ^5.0.3
+        specifier: ^5.0.6
         version: 5.0.6
       '@types/node':
-        specifier: ^24.6.2
+        specifier: ^24.10.13
         version: 24.10.13
       nodemon:
-        specifier: ^3.1.10
+        specifier: ^3.1.13
         version: 3.1.13
       tsc-watch:
         specifier: ^7.2.0
@@ -1839,6 +1842,9 @@ packages:
 
   '@types/jsonwebtoken@9.0.10':
     resolution: {integrity: sha512-asx5hIG9Qmf/1oStypjanR7iKTv0gXQ1Ov/jfrX6kS/EO0OFni8orbmGCn0672NHR3kXHwpAwR+B368ZGN/2rA==}
+
+  '@types/lusca@1.7.5':
+    resolution: {integrity: sha512-l49gAf8pu2iMzbKejLcz6Pqj+51H2na6BgORv1ElnE8ByPFcBdh/eZ0WNR1Va/6ZuNSZa01Hoy1DTZ3IZ+y+kA==}
 
   '@types/mime@1.3.5':
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
@@ -5526,6 +5532,10 @@ snapshots:
     dependencies:
       '@types/ms': 2.1.0
       '@types/node': 24.10.13
+
+  '@types/lusca@1.7.5':
+    dependencies:
+      '@types/express': 5.0.6
 
   '@types/mime@1.3.5': {}
 

@@ -9,7 +9,7 @@ class SqlRepository {
     db;
     constructor() {
         this.db = new sqlite3_1.Database("age.db");
-        this.db.exec((0, fs_1.readFileSync)("age.sql").toString(), err => {
+        this.db.exec((0, fs_1.readFileSync)("age.sql").toString(), (err) => {
             if (err != undefined)
                 throw err;
         });
@@ -18,11 +18,15 @@ class SqlRepository {
         return await new sql_helpers_1.TransactionHelper()
             .add(sql_queries_1.insertPerson, { $name: r.name })
             .add(sql_queries_1.insertCalculation, {
-            $age: r.age, $years: r.years, $nextage: r.nextage
+            $age: r.age,
+            $years: r.years,
+            $nextage: r.nextage,
         })
             .add(sql_queries_1.insertResult, {
             $name: r.name,
-            $age: r.age, $years: r.years, $nextage: r.nextage
+            $age: r.age,
+            $years: r.years,
+            $nextage: r.nextage,
         })
             .run(this.db);
     }

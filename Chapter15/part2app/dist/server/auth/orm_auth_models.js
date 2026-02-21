@@ -12,12 +12,18 @@ const initializeAuthModels = (sequelize) => {
     CredentialsModel.init({
         username: { type: sequelize_1.DataTypes.STRING, primaryKey: true },
         hashedPassword: { type: sequelize_1.DataTypes.BLOB },
-        salt: { type: sequelize_1.DataTypes.BLOB }
+        salt: { type: sequelize_1.DataTypes.BLOB },
     }, { sequelize });
     RoleModel.init({
         name: { type: sequelize_1.DataTypes.STRING, primaryKey: true },
     }, { sequelize });
-    RoleModel.belongsToMany(CredentialsModel, { through: "RoleMembershipJunction", foreignKey: "name" });
-    CredentialsModel.belongsToMany(RoleModel, { through: "RoleMembershipJunction", foreignKey: "username" });
+    RoleModel.belongsToMany(CredentialsModel, {
+        through: "RoleMembershipJunction",
+        foreignKey: "name",
+    });
+    CredentialsModel.belongsToMany(RoleModel, {
+        through: "RoleMembershipJunction",
+        foreignKey: "username",
+    });
 };
 exports.initializeAuthModels = initializeAuthModels;

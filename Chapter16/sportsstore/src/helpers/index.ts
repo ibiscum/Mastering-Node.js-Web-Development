@@ -1,7 +1,7 @@
 import { Express } from "express";
-import { getConfig } from "../config";
+import { getConfig } from "../config/index.js";
 import { engine } from "express-handlebars";
-import * as env_helpers from "./env";
+import * as env_helpers from "./env.js";
 
 const location = getConfig("templates:location");
 const config = getConfig("templates:config");

@@ -1,13 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.SupplierModel = exports.CategoryModel = exports.ProductModel = void 0;
-const sequelize_1 = require("sequelize");
-class ProductModel extends sequelize_1.Model {
+import { Model, } from "sequelize";
+export class ProductModel extends Model {
 }
-exports.ProductModel = ProductModel;
-class CategoryModel extends sequelize_1.Model {
+export class CategoryModel extends Model {
 }
-exports.CategoryModel = CategoryModel;
-class SupplierModel extends sequelize_1.Model {
+export class SupplierModel extends Model {
 }
-exports.SupplierModel = SupplierModel;

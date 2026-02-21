@@ -1,4 +1,4 @@
-import { Category, Product, Supplier } from "./catalog_models";
+import { Category, Product, Supplier } from "./catalog_models.js";
 
 export interface CatalogRepository {
   getProducts(): Promise<Product[]>;

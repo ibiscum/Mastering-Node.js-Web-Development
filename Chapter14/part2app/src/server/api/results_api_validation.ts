@@ -3,7 +3,7 @@ import {
   ValidationRequirements,
   ValidationRule,
   WebServiceValidation,
-} from "./validation_types";
+} from "./validation_types.js";
 import validator from "validator";
 
 const intValidator: ValidationRule = {

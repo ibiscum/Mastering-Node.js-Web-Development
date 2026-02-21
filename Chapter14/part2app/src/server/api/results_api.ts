@@ -1,8 +1,8 @@
 import { WebService } from "./http_adapter";
-import { Result } from "../data/repository";
-import repository from "../data";
+import { Result } from "../data/repository.js";
+import repository from "../data/index.js";
 import * as jsonpatch from "fast-json-patch";
-import { validateModel } from "./validation_functions";
+import { validateModel } from "./validation_functions.js";
 import { ResultModelValidation } from "./results_api_validation";
 
 export class ResultWebService implements WebService<Result> {

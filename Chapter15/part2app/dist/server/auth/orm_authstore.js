@@ -11,7 +11,7 @@ class OrmAuthStore {
             dialect: "sqlite",
             storage: "orm_auth.db",
             logging: console.log,
-            logQueryParameters: true
+            logQueryParameters: true,
         });
         this.initModelAndDatabase();
     }
@@ -22,10 +22,12 @@ class OrmAuthStore {
         await this.storeOrUpdateUser("alice", "mysecret");
         await this.storeOrUpdateUser("bob", "mysecret");
         await this.storeOrUpdateRole({
-            name: "Users", members: ["alice", "bob"]
+            name: "Users",
+            members: ["alice", "bob"],
         });
         await this.storeOrUpdateRole({
-            name: "Admins", members: ["alice"]
+            name: "Admins",
+            members: ["alice"],
         });
     }
     async getUser(name) {
@@ -35,7 +37,9 @@ class OrmAuthStore {
         const salt = (0, crypto_1.randomBytes)(16);
         const hashedPassword = await this.createHashCode(password, salt);
         const [model] = await orm_auth_models_1.CredentialsModel.upsert({
-            username, hashedPassword, salt
+            username,
+            hashedPassword,
+            salt,
         });
         return model;
     }
@@ -53,40 +57,42 @@ class OrmAuthStore {
                 if (err) {
                     reject(err);
                 }
-                ;
                 resolve(hash);
             });
         });
     }
     async getRole(name) {
         const stored = await orm_auth_models_1.RoleModel.findByPk(name, {
-            include: [{ model: orm_auth_models_1.CredentialsModel, attributes: ["username"] }]
+            include: [{ model: orm_auth_models_1.CredentialsModel, attributes: ["username"] }],
         });
         if (stored) {
             return {
                 name: stored.name,
-                members: stored.CredentialsModels?.map(m => m.username) ?? []
+                members: stored.CredentialsModels?.map((m) => m.username) ?? [],
             };
         }
         return null;
     }
     async getRolesForUser(username) {
         return (await orm_auth_models_1.RoleModel.findAll({
-            include: [{
+            include: [
+                {
                     model: orm_auth_models_1.CredentialsModel,
                     where: { username },
-                    attributes: []
-                }]
-        })).map(rm => rm.name);
+                    attributes: [],
+                },
+            ],
+        })).map((rm) => rm.name);
     }
     async storeOrUpdateRole(role) {
         return await this.sequelize.transaction(async (transaction) => {
             const users = await orm_auth_models_1.CredentialsModel.findAll({
                 where: { username: { [sequelize_1.Op.in]: role.members } },
-                transaction
+                transaction,
             });
             const [rm] = await orm_auth_models_1.RoleModel.findOrCreate({
-                where: { name: role.name }, transaction
+                where: { name: role.name },
+                transaction,
             });
             await rm.setCredentialsModels(users, { transaction });
             return role;

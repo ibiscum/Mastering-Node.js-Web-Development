@@ -7,13 +7,13 @@ const primaryKey = {
     id: {
         type: sequelize_1.DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
-    }
+        primaryKey: true,
+    },
 };
 const initializeModels = (sequelize) => {
     orm_models_1.Person.init({
         ...primaryKey,
-        name: { type: sequelize_1.DataTypes.STRING }
+        name: { type: sequelize_1.DataTypes.STRING },
     }, { sequelize });
     orm_models_1.Calculation.init({
         ...primaryKey,
@@ -53,7 +53,7 @@ const fromOrmModel = (model) => {
         name: model?.Person?.name || "",
         age: model?.Calculation?.age || 0,
         years: model?.Calculation?.years || 0,
-        nextage: model?.Calculation?.nextage || 0
+        nextage: model?.Calculation?.nextage || 0,
     };
 };
 exports.fromOrmModel = fromOrmModel;

@@ -8,12 +8,11 @@ const setCookie = (resp, name, val, opts) => {
         maxAge: 300 * 1000,
         sameSite: "strict",
         signed: true,
-        ...opts
+        ...opts,
     });
 };
 exports.setCookie = setCookie;
 const setJsonCookie = (resp, name, val) => {
-    ;
     (0, exports.setCookie)(resp, name, JSON.stringify(val));
 };
 exports.setJsonCookie = setJsonCookie;

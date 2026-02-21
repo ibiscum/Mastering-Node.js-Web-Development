@@ -1,13 +1,13 @@
 import { Express } from "express";
-import { createAdapter } from "./http_adapter";
-import { ResultWebService } from "./results_api";
-import { Validator } from "./validation_adapter";
-import { ResultWebServiceValidation } from "./results_api_validation";
-import { FeathersWrapper } from "./feathers_adapter";
+import { createAdapter } from "./http_adapter.js";
+import { ResultWebService } from "./results_api.js";
+import { Validator } from "./validation_adapter.js";
+import { ResultWebServiceValidation } from "./results_api_validation.js";
+import { FeathersWrapper } from "./feathers_adapter.js";
 import { feathers } from "@feathersjs/feathers";
 import feathersExpress, { rest } from "@feathersjs/express";
-import { ValidationError } from "./validation_types";
-import { roleHook } from "../auth";
+import { ValidationError } from "./validation_types.js";
+import { roleHook } from "../auth/index.js";
 import passport from "passport";
 
 export const createApi = (app: Express) => {

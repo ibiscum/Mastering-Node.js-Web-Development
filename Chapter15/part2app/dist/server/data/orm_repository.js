@@ -11,7 +11,7 @@ class OrmRepository {
             dialect: "sqlite",
             storage: "orm_age.db",
             logging: console.log,
-            logQueryParameters: true
+            logQueryParameters: true,
         });
         this.initModelAndDatabase();
     }
@@ -26,16 +26,19 @@ class OrmRepository {
         return await this.sequelize.transaction(async (tx) => {
             const [person] = await orm_models_1.Person.findOrCreate({
                 where: { name: r.name },
-                transaction: tx
+                transaction: tx,
             });
             const [calculation] = await orm_models_1.Calculation.findOrCreate({
                 where: {
-                    age: r.age, years: r.years, nextage: r.nextage
+                    age: r.age,
+                    years: r.years,
+                    nextage: r.nextage,
                 },
-                transaction: tx
+                transaction: tx,
             });
             return (await orm_models_1.ResultModel.create({
-                personId: person.id, calculationId: calculation.id
+                personId: person.id,
+                calculationId: calculation.id,
             }, { transaction: tx })).id;
         });
     }
@@ -43,21 +46,22 @@ class OrmRepository {
         return (await orm_models_1.ResultModel.findAll({
             include: [orm_models_1.Person, orm_models_1.Calculation],
             limit,
-            order: [["id", "DESC"]]
-        })).map(row => (0, orm_helpers_1.fromOrmModel)(row));
+            order: [["id", "DESC"]],
+        })).map((row) => (0, orm_helpers_1.fromOrmModel)(row));
     }
     async getResultsByName(name, limit) {
         return (await orm_models_1.ResultModel.findAll({
             include: [orm_models_1.Person, orm_models_1.Calculation],
             where: {
-                "$Person.name$": name
+                "$Person.name$": name,
             },
-            limit, order: [["id", "DESC"]]
-        })).map(row => (0, orm_helpers_1.fromOrmModel)(row));
+            limit,
+            order: [["id", "DESC"]],
+        })).map((row) => (0, orm_helpers_1.fromOrmModel)(row));
     }
     async getResultById(id) {
         const model = await orm_models_1.ResultModel.findByPk(id, {
-            include: [orm_models_1.Person, orm_models_1.Calculation]
+            include: [orm_models_1.Person, orm_models_1.Calculation],
         });
         return model ? (0, orm_helpers_1.fromOrmModel)(model) : undefined;
     }
@@ -70,12 +74,16 @@ class OrmRepository {
             const stored = await orm_models_1.ResultModel.findByPk(r.id);
             if (stored !== null) {
                 const [person] = await orm_models_1.Person.findOrCreate({
-                    where: { name: r.name }, transaction
+                    where: { name: r.name },
+                    transaction,
                 });
                 const [calculation] = await orm_models_1.Calculation.findOrCreate({
                     where: {
-                        age: r.age, years: r.years, nextage: r.nextage
-                    }, transaction
+                        age: r.age,
+                        years: r.years,
+                        nextage: r.nextage,
+                    },
+                    transaction,
                 });
                 stored.personId = person.id;
                 stored.calculationId = calculation.id;

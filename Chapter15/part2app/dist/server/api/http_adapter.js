@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createAdapter = void 0;
+exports.createAdapter = createAdapter;
 const validation_types_1 = require("./validation_types");
 function createAdapter(app, ws, baseUrl) {
     app.get(baseUrl, async (req, resp) => {
@@ -14,7 +14,7 @@ function createAdapter(app, ws, baseUrl) {
     });
     app.get(`${baseUrl}/:id`, async (req, resp) => {
         try {
-            const data = await ws.getOne((req.params.id));
+            const data = await ws.getOne(req.params.id);
             if (data == undefined) {
                 resp.writeHead(404);
             }
@@ -70,4 +70,3 @@ function createAdapter(app, ws, baseUrl) {
         resp.end();
     };
 }
-exports.createAdapter = createAdapter;

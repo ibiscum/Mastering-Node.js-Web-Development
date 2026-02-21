@@ -13,17 +13,18 @@ exports.getSession = getSession;
 const sessionMiddleware = () => {
     const sequelize = new sequelize_1.Sequelize({
         dialect: "sqlite",
-        storage: "pkg_sessions.db"
+        storage: "pkg_sessions.db",
     });
     const store = new ((0, connect_session_sequelize_1.default)(express_session_1.default.Store))({
-        db: sequelize
+        db: sequelize,
     });
     store.sync();
     return (0, express_session_1.default)({
         secret: "mysecret",
         store: store,
-        cookie: { maxAge: 300 * 1000, sameSite: "strict" },
-        resave: false, saveUninitialized: false
+        cookie: { maxAge: 300 * 1000, sameSite: "strict", secure: true },
+        resave: false,
+        saveUninitialized: false,
     });
 };
 exports.sessionMiddleware = sessionMiddleware;
