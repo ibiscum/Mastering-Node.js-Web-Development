@@ -1,5 +1,5 @@
-import { Customer } from "./customer_models";
-import { Address } from "./order_models";
+import { Customer } from "./customer_models.js";
+import { Address } from "./order_models.js";
 
 export interface CustomerRepository {
   getCustomer(id: number): Promise<Customer | null>;

@@ -1,9 +1,11 @@
 import { Sequelize } from "sequelize";
-import { initializeCatalogModels } from "./catalog_helpers";
-import { initializeCustomerModels } from "./customer_helpers";
-import { initializeOrderModels } from "./order_helpers";
+import { initializeCatalogModels } from "./catalog_helpers.js";
+import { initializeCustomerModels } from "./customer_helpers.js";
+import { initializeOrderModels } from "./order_helpers.js";
 
-export { ProductModel, CategoryModel, SupplierModel } from "./catalog_models";
+export { ProductModel, CategoryModel, SupplierModel } from "./catalog_models.js";
+export { CustomerModel } from "./customer_models.js";
+export { OrderModel } from "./order_models.js";
 
 export const initializeModels = (sequelize: Sequelize) => {
   initializeCatalogModels(sequelize);

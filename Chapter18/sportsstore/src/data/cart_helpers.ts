@@ -1,4 +1,4 @@
-import * as catalog_repository from "./catalog_repository.js";
+import  { catalog_repository } from "./index.js";
 import { Cart } from "./cart_models.js";
 import { Product } from "./catalog_models.js";
 

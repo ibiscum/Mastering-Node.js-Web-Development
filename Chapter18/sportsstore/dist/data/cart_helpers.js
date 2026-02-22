@@ -1,4 +1,4 @@
-import * as catalog_repository from "./catalog_repository.js";
+import { catalog_repository } from "./index.js";
 export const getCartDetail = async (cart) => {
     const ids = cart.lines.map((l) => l.productId);
     const db_data = await catalog_repository.getProductDetails(ids);

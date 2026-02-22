@@ -1,9 +1,9 @@
-import { BaseRepo } from "./core";
-import { AddQueries } from "./queries";
-import { AddStorage } from "./storage";
-import { AddOrderQueries } from "./order_queries";
-import { AddOrderStorage } from "./order_storage";
-import { AddCustomers } from "./customers";
+import { BaseRepo } from "./core.js";
+import { AddQueries } from "./queries.js";
+import { AddStorage } from "./storage.js";
+import { AddOrderQueries } from "./order_queries.js";
+import { AddOrderStorage } from "./order_storage.js";
+import { AddCustomers } from "./customers.js";
 
 const CatalogRepo = AddStorage(AddQueries(BaseRepo));
 const RepoWithOrders = AddOrderStorage(AddOrderQueries(CatalogRepo));

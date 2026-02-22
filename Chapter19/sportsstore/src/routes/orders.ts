@@ -1,15 +1,15 @@
 import { Express } from "express";
-import { Address } from "../data/order_models";
+import { Address } from "../data/order_models.js";
 import {
   AddressValidator,
   CustomerValidator,
   ValidationResults,
   getData,
   isValid,
-} from "../data/validation";
-import { Customer } from "../data/customer_models";
-import { createAndStoreOrder } from "./order_helpers";
-import { customer_repository } from "../data";
+} from "../data/validation/index.js";
+import { Customer } from "../data/customer_models.js";
+import { createAndStoreOrder } from "./order_helpers.js";
+import { customer_repository } from "../data/index.js";
 import passport from "passport";
 
 declare module "express-session" {

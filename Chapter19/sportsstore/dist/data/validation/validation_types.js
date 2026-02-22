@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ValidationStatus = void 0;
-class ValidationStatus {
+export class ValidationStatus {
     value;
     invalid = false;
     constructor(value) {
@@ -15,4 +12,3 @@ class ValidationStatus {
     }
     messages = [];
 }
-exports.ValidationStatus = ValidationStatus;

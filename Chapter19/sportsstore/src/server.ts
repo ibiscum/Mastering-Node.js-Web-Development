@@ -1,12 +1,12 @@
 import { createServer } from "http";
 import express, { Express } from "express";
 import helmet from "helmet";
-import { getConfig } from "./config";
-import { createRoutes } from "./routes";
-import { createTemplates } from "./helpers";
-import { createErrorHandlers } from "./errors";
-import { createSessions } from "./sessions";
-import { createAuthentication } from "./authentication";
+import { getConfig } from "./config/index.js";
+import { createRoutes } from "./routes/index.js";
+import { createTemplates } from "./helpers/index.js";
+import { createErrorHandlers } from "./errors.js";
+import { createSessions } from "./sessions.js";
+import { createAuthentication } from "./authentication.js";
 
 const port = getConfig("http:port", 5000);
 

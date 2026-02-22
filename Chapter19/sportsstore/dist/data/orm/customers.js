@@ -1,33 +1,32 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddCustomers = void 0;
-const customer_models_1 = require("./models/customer_models");
-const order_models_1 = require("./models/order_models");
-function AddCustomers(Base) {
+import { CustomerModel } from "./models/customer_models.js";
+import { AddressModel, OrderModel } from "./models/order_models.js";
+export function AddCustomers(Base) {
     return class extends Base {
         getCustomer(id) {
-            return customer_models_1.CustomerModel.findByPk(id, {
-                raw: true
+            return CustomerModel.findByPk(id, {
+                raw: true,
             });
         }
         getCustomerByFederatedId(id) {
-            return customer_models_1.CustomerModel.findOne({
+            return CustomerModel.findOne({
                 where: { federatedId: id },
-                raw: true
+                raw: true,
             });
         }
         getCustomerAddress(id) {
-            return order_models_1.AddressModel.findOne({
-                include: [{
-                        model: order_models_1.OrderModel,
+            return AddressModel.findOne({
+                include: [
+                    {
+                        model: OrderModel,
                         where: { customerId: id },
-                        attributes: []
-                    }],
-                order: [["updatedAt", "DESC"]]
+                        attributes: [],
+                    },
+                ],
+                order: [["updatedAt", "DESC"]],
             });
         }
         async storeCustomer(customer) {
-            const [data, created] = await customer_models_1.CustomerModel.findOrCreate({
+            const [data, created] = await CustomerModel.findOrCreate({
                 where: { email: customer.email },
                 defaults: customer,
             });
@@ -41,4 +40,3 @@ function AddCustomers(Base) {
         }
     };
 }
-exports.AddCustomers = AddCustomers;

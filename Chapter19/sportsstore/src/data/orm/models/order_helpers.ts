@@ -3,9 +3,9 @@ import {
   OrderModel,
   ProductSelectionModel,
   AddressModel,
-} from "./order_models";
-import { CustomerModel } from "./customer_models";
-import { ProductModel } from ".";
+} from "./order_models.js";
+import { CustomerModel } from "./customer_models.js";
+import { ProductModel } from "./index.js";
 
 const primaryKey = {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },

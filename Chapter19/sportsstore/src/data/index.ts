@@ -1,7 +1,7 @@
-import { CatalogRepository } from "./catalog_repository";
-import { CatalogRepoImpl } from "./orm";
-import { OrderRepository } from "./order_repository";
-import { CustomerRepository } from "./customer_repository";
+import { CatalogRepository } from "./catalog_repository.js";
+import { CatalogRepoImpl } from "./orm/index.js";
+import { OrderRepository } from "./order_repository.js";
+import { CustomerRepository } from "./customer_repository.js";
 
 const repo = new CatalogRepoImpl();
 

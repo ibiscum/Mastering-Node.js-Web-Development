@@ -1,13 +1,13 @@
 import { Express } from "express";
-import { getConfig, getSecret } from "./config";
+import { getConfig, getSecret } from "./config/index.js";
 import passport from "passport";
 import {
   Strategy as GoogleStrategy,
   Profile,
   VerifyCallback,
 } from "passport-google-oauth20";
-import { customer_repository } from "./data";
-import { Customer } from "./data/customer_models";
+import { customer_repository } from "./data/index.js";
+import { Customer } from "./data/customer_models.js";
 
 const callbackURL: string = getConfig("auth:openauth:redirectionUrl");
 const clientID = getSecret("GOOGLE_CLIENT_ID");

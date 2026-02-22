@@ -1,5 +1,5 @@
-import { Product } from "./catalog_models";
-import { Customer } from "./customer_models";
+import { Product } from "./catalog_models.js";
+import { Customer } from "./customer_models.js";
 
 export interface Order {
   id?: number;

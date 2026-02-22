@@ -6,9 +6,9 @@ import {
   InferCreationAttributes,
   HasManySetAssociationsMixin,
 } from "sequelize";
-import { ProductModel } from "./catalog_models";
-import { CustomerModel } from "./customer_models";
-import { Address, Order, ProductSelection } from "../../order_models";
+import { ProductModel } from "./catalog_models.js";
+import { CustomerModel } from "./customer_models.js";
+import { Address, Order, ProductSelection } from "../../order_models.js";
 
 export class OrderModel
   extends Model<
