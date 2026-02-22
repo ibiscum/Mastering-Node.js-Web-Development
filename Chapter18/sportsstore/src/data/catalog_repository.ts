@@ -4,7 +4,7 @@ import {
   Supplier,
   ProductQueryParameters,
   ProductQueryResult,
-} from "./catalog_models";
+} from "./catalog_models.js";
 
 export interface CatalogRepository {
   getProducts(params?: ProductQueryParameters): Promise<ProductQueryResult>;

@@ -1,6 +1,6 @@
 import { Express } from "express";
 import { Sequelize } from "sequelize";
-import { getConfig, getSecret } from "./config";
+import { getConfig, getSecret } from "./config/index.js";
 import session from "express-session";
 import sessionStore from "connect-session-sequelize";
 import lusca from "lusca";

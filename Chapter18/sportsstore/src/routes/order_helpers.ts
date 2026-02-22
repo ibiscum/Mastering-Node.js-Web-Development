@@ -1,7 +1,7 @@
-import { catalog_repository, order_repository } from "../data";
-import { Cart } from "../data/cart_models";
-import { Customer } from "../data/customer_models";
-import { Address, Order } from "../data/order_models";
+import { catalog_repository, order_repository } from "../data/index.js";
+import { Cart } from "../data/cart_models.js";
+import { Customer } from "../data/customer_models.js";
+import { Address, Order } from "../data/order_models.js";
 
 export const createAndStoreOrder = async (
   customer: Customer,

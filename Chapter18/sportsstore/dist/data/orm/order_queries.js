@@ -1,24 +1,22 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddOrderQueries = void 0;
-const order_models_1 = require("./models/order_models");
-const customer_models_1 = require("./models/customer_models");
+import { AddressModel, OrderModel } from "./models/order_models.js";
+import { CustomerModel } from "./models/customer_models.js";
 const queryConfig = {
     include: [
-        { model: order_models_1.AddressModel, as: "address" },
-        { model: customer_models_1.CustomerModel, as: "customer" }
+        { model: AddressModel, as: "address" },
+        { model: CustomerModel, as: "customer" },
     ],
-    raw: true, nest: true
+    raw: true,
+    nest: true,
 };
-function AddOrderQueries(Base) {
+export function AddOrderQueries(Base) {
     return class extends Base {
         getOrder(id) {
-            return order_models_1.OrderModel.findByPk(id, queryConfig);
+            return OrderModel.findByPk(id, queryConfig);
         }
         getOrders(excludeShipped) {
-            return order_models_1.OrderModel.findAll(excludeShipped ?
-                { ...queryConfig, where: { shipped: false } } : queryConfig);
+            return OrderModel.findAll(excludeShipped
+                ? { ...queryConfig, where: { shipped: false } }
+                : queryConfig);
         }
     };
 }
-exports.AddOrderQueries = AddOrderQueries;

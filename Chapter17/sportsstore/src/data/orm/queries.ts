@@ -1,6 +1,6 @@
-import { CategoryModel, ProductModel, SupplierModel } from "./models";
-import { BaseRepo, Constructor } from "./core";
-import { ProductQueryParameters } from "../catalog_models";
+import { CategoryModel, ProductModel, SupplierModel } from "./models/index.js";
+import { BaseRepo, Constructor } from "./core.js";
+import { ProductQueryParameters } from "../catalog_models.js";
 import { Op } from "sequelize";
 
 export function AddQueries<TBase extends Constructor<BaseRepo>>(Base: TBase) {

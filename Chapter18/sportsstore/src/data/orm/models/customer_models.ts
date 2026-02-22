@@ -4,7 +4,7 @@ import {
   InferAttributes,
   InferCreationAttributes,
 } from "sequelize";
-import { Customer } from "../../customer_models";
+import { Customer } from "../../customer_models.js";
 
 export class CustomerModel
   extends Model<

@@ -3,7 +3,7 @@ import {
   ValidationRule,
   ValidationRuleSet,
   ValidationStatus,
-} from "./validation_types";
+} from "./validation_types.js";
 
 export class Validator<T> {
   constructor(

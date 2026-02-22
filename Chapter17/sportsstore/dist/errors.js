@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createErrorHandlers = void 0;
-const config_1 = require("./config");
-require("express-async-errors");
-const template400 = (0, config_1.getConfig)("errors:400");
-const template500 = (0, config_1.getConfig)("errors:500");
-const createErrorHandlers = (app) => {
+import { getConfig } from "./config/index.js";
+import "express-async-errors";
+const template400 = getConfig("errors:400");
+const template500 = getConfig("errors:500");
+export const createErrorHandlers = (app) => {
     app.use((req, resp) => {
         resp.statusCode = 404;
         resp.render(template400);
@@ -25,4 +22,3 @@ const createErrorHandlers = (app) => {
     };
     app.use(handler);
 };
-exports.createErrorHandlers = createErrorHandlers;

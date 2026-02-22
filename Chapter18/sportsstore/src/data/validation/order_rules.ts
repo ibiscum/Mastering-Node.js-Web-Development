@@ -1,7 +1,7 @@
-import { Validator } from "./validator";
-import { required, minLength, email, no_op } from "./basic_rules";
-import { Address } from "../order_models";
-import { Customer } from "../customer_models";
+import { Validator } from "./validator.js";
+import { required, minLength, email, no_op } from "./basic_rules.js";
+import { Address } from "../order_models.js";
+import { Customer } from "../customer_models.js";
 
 export const CustomerValidator = new Validator<Customer>({
   name: [required, minLength(6)],

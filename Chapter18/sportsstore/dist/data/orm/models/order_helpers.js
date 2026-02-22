@@ -1,30 +1,36 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.initializeOrderModels = void 0;
-const sequelize_1 = require("sequelize");
-const order_models_1 = require("./order_models");
-const customer_models_1 = require("./customer_models");
-const _1 = require(".");
+import { DataTypes } from "sequelize";
+import { OrderModel, ProductSelectionModel, AddressModel, } from "./order_models.js";
+import { CustomerModel } from "./customer_models.js";
+import { ProductModel } from "./catalog_models.js";
 const primaryKey = {
-    id: { type: sequelize_1.DataTypes.INTEGER, autoIncrement: true, primaryKey: true }
+    id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
 };
-const initializeOrderModels = (sequelize) => {
-    order_models_1.OrderModel.init({
-        ...primaryKey, shipped: sequelize_1.DataTypes.BOOLEAN
-    }, { sequelize });
-    order_models_1.ProductSelectionModel.init({
+export const initializeOrderModels = (sequelize) => {
+    OrderModel.init({
         ...primaryKey,
-        quantity: sequelize_1.DataTypes.INTEGER, price: sequelize_1.DataTypes.DECIMAL(10, 2)
+        shipped: DataTypes.BOOLEAN,
     }, { sequelize });
-    order_models_1.AddressModel.init({
+    ProductSelectionModel.init({
         ...primaryKey,
-        street: sequelize_1.DataTypes.STRING, city: sequelize_1.DataTypes.STRING,
-        state: sequelize_1.DataTypes.STRING, zip: sequelize_1.DataTypes.STRING,
+        quantity: DataTypes.INTEGER,
+        price: DataTypes.DECIMAL(10, 2),
     }, { sequelize });
-    order_models_1.OrderModel.belongsTo(customer_models_1.CustomerModel, { as: "customer" });
-    order_models_1.OrderModel.belongsTo(order_models_1.AddressModel, { foreignKey: "addressId", as: "address" });
-    order_models_1.OrderModel.belongsToMany(order_models_1.ProductSelectionModel, { through: "OrderProductJunction",
-        foreignKey: "orderId", as: "selections" });
-    order_models_1.ProductSelectionModel.belongsTo(_1.ProductModel, { as: "product" });
+    AddressModel.init({
+        ...primaryKey,
+        street: DataTypes.STRING,
+        city: DataTypes.STRING,
+        state: DataTypes.STRING,
+        zip: DataTypes.STRING,
+    }, { sequelize });
+    OrderModel.belongsTo(CustomerModel, { as: "customer" });
+    OrderModel.belongsTo(AddressModel, {
+        foreignKey: "addressId",
+        as: "address",
+    });
+    OrderModel.belongsToMany(ProductSelectionModel, {
+        through: "OrderProductJunction",
+        foreignKey: "orderId",
+        as: "selections",
+    });
+    ProductSelectionModel.belongsTo(ProductModel, { as: "product" });
 };
-exports.initializeOrderModels = initializeOrderModels;

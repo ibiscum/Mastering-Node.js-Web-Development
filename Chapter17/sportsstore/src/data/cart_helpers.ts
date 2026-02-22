@@ -1,6 +1,6 @@
-import { catalog_repository } from ".";
-import { Cart } from "./cart_models";
-import { Product } from "./catalog_models";
+import { catalog_repository } from "./index.js";
+import { Cart } from "./cart_models.js";
+import { Product } from "./catalog_models.js";
 
 export interface CartDetail {
   lines: {
@@ -15,7 +15,7 @@ export const getCartDetail = async (cart: Cart): Promise<CartDetail> => {
   const ids = cart.lines.map((l) => l.productId);
   const db_data = await catalog_repository.getProductDetails(ids);
 
-  const products = Object.fromEntries(db_data.map((p) => [p.id, p]));
+  const products = Object.fromEntries(db_data.map((p: Product) => [p.id, p]));
 
   const lines = cart.lines.map((line) => ({
     product: products[line.productId],

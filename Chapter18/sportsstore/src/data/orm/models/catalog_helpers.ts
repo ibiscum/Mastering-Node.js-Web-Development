@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize } from "sequelize";
-import { CategoryModel, ProductModel, SupplierModel } from "./catalog_models";
+import { CategoryModel, ProductModel, SupplierModel } from "./catalog_models.js";
 
 const primaryKey = {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },

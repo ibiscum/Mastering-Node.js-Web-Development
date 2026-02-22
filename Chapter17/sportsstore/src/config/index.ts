@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
-import { getEnvironment, Env } from "./environment";
-import { merge } from "./merge";
+import { getEnvironment, Env } from "./environment.js";
+import { merge } from "./merge.js";
 import { config as dotenvconfig } from "dotenv";
 
 const file = process.env.SERVER_CONFIG ?? "server.config.json";

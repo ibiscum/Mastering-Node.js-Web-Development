@@ -1,13 +1,31 @@
 {
   "suppliers": [
-    { "id": 1, "name": "Acme Industries" },
-    { "id": 2, "name": "Big Boat Co" },
-    { "id": 3, "name": "London Chess" }
+    {
+      "id": 1,
+      "name": "Acme Industries"
+    },
+    {
+      "id": 2,
+      "name": "Big Boat Co"
+    },
+    {
+      "id": 3,
+      "name": "London Chess"
+    }
   ],
   "categories": [
-    { "id": 1, "name": "Watersports" },
-    { "id": 2, "name": "Soccer" },
-    { "id": 3, "name": "Chess" }
+    {
+      "id": 1,
+      "name": "Watersports"
+    },
+    {
+      "id": 2,
+      "name": "Soccer"
+    },
+    {
+      "id": 3,
+      "name": "Chess"
+    }
   ],
   "products": [
     {

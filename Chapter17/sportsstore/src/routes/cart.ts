@@ -1,7 +1,7 @@
 import { Express } from "express";
 import { escape, unescape } from "querystring";
-import { Cart, addLine, createCart, removeLine } from "../data/cart_models";
-import * as cart_helpers from "../data/cart_helpers";
+import { Cart, addLine, createCart, removeLine } from "../data/cart_models.js";
+import * as cart_helpers from "../data/cart_helpers.js";
 
 declare module "express-session" {
   interface SessionData {

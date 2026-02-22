@@ -1,11 +1,11 @@
-import { Order } from "../order_models";
-import { BaseRepo, Constructor } from "./core";
+import { Order } from "../order_models.js";
+import { BaseRepo, Constructor } from "./core.js";
 import {
   AddressModel,
   OrderModel,
   ProductSelectionModel,
-} from "./models/order_models";
-import { CustomerModel } from "./models/customer_models";
+} from "./models/order_models.js";
+import { CustomerModel } from "./models/customer_models.js";
 
 export function AddOrderStorage<TBase extends Constructor<BaseRepo>>(
   Base: TBase,

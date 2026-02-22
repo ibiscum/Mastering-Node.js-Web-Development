@@ -1,5 +1,5 @@
 import validator from "validator";
-import { ValidationStatus } from "./validation_types";
+import { ValidationStatus } from "./validation_types.js";
 
 export const minLength = (min: number) => (status: ValidationStatus) => {
   if (!validator.isLength(status.value, { min })) {

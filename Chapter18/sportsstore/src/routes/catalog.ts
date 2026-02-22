@@ -1,5 +1,5 @@
 import { Express } from "express";
-import { catalog_repository } from "../data";
+import { catalog_repository } from "../data/index.js";
 
 export const createCatalogRoutes = (app: Express) => {
   app.get("/", async (req, resp) => {

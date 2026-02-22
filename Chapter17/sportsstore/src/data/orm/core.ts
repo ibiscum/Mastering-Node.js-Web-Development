@@ -1,11 +1,11 @@
 import { Sequelize } from "sequelize";
-import { getConfig } from "../../config";
+import { getConfig } from "../../config/index.js";
 import {
   initializeModels,
   CategoryModel,
   ProductModel,
   SupplierModel,
-} from "./models";
+} from "./models/index.js";
 import { readFileSync } from "fs";
 
 const config = getConfig("catalog:orm_repo");

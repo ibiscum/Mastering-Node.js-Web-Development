@@ -1,8 +1,8 @@
 import { Attributes, FindOptions } from "sequelize";
-import { Order } from "../order_models";
-import { BaseRepo, Constructor } from "./core";
-import { AddressModel, OrderModel } from "./models/order_models";
-import { CustomerModel } from "./models/customer_models";
+import { Order } from "../order_models.js";
+import { BaseRepo, Constructor } from "./core.js";
+import { AddressModel, OrderModel } from "./models/order_models.js";
+import { CustomerModel } from "./models/customer_models.js";
 
 const queryConfig: FindOptions<Attributes<OrderModel>> = {
   include: [

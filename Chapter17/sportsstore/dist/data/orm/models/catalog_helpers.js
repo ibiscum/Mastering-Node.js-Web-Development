@@ -1,29 +1,37 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.initializeCatalogModels = void 0;
-const sequelize_1 = require("sequelize");
-const catalog_models_1 = require("./catalog_models");
+import { DataTypes } from "sequelize";
+import { CategoryModel, ProductModel, SupplierModel } from "./catalog_models.js";
 const primaryKey = {
-    id: { type: sequelize_1.DataTypes.INTEGER, autoIncrement: true, primaryKey: true }
+    id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
 };
-const initializeCatalogModels = (sequelize) => {
-    catalog_models_1.ProductModel.init({
+export const initializeCatalogModels = (sequelize) => {
+    ProductModel.init({
         ...primaryKey,
-        name: { type: sequelize_1.DataTypes.STRING },
-        description: { type: sequelize_1.DataTypes.STRING },
-        price: { type: sequelize_1.DataTypes.DECIMAL(10, 2) }
+        name: { type: DataTypes.STRING },
+        description: { type: DataTypes.STRING },
+        price: { type: DataTypes.DECIMAL(10, 2) },
     }, { sequelize });
-    catalog_models_1.CategoryModel.init({
+    CategoryModel.init({
         ...primaryKey,
-        name: { type: sequelize_1.DataTypes.STRING }
+        name: { type: DataTypes.STRING },
     }, { sequelize });
-    catalog_models_1.SupplierModel.init({
+    SupplierModel.init({
         ...primaryKey,
-        name: { type: sequelize_1.DataTypes.STRING }
+        name: { type: DataTypes.STRING },
     }, { sequelize });
-    catalog_models_1.ProductModel.belongsTo(catalog_models_1.CategoryModel, { foreignKey: "categoryId", as: "category" });
-    catalog_models_1.ProductModel.belongsTo(catalog_models_1.SupplierModel, { foreignKey: "supplierId", as: "supplier" });
-    catalog_models_1.CategoryModel.hasMany(catalog_models_1.ProductModel, { foreignKey: "categoryId", as: "products" });
-    catalog_models_1.SupplierModel.hasMany(catalog_models_1.ProductModel, { foreignKey: "supplierId", as: "products" });
+    ProductModel.belongsTo(CategoryModel, {
+        foreignKey: "categoryId",
+        as: "category",
+    });
+    ProductModel.belongsTo(SupplierModel, {
+        foreignKey: "supplierId",
+        as: "supplier",
+    });
+    CategoryModel.hasMany(ProductModel, {
+        foreignKey: "categoryId",
+        as: "products",
+    });
+    SupplierModel.hasMany(ProductModel, {
+        foreignKey: "supplierId",
+        as: "products",
+    });
 };
-exports.initializeCatalogModels = initializeCatalogModels;

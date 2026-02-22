@@ -4,9 +4,10 @@ import {
   Supplier,
   ProductQueryParameters,
   ProductQueryResult,
-} from "./catalog_models";
+} from "./catalog_models.js";
 
-export interface CatalogRepository {
+interface CatalogRepository {
+
   getProducts(params?: ProductQueryParameters): Promise<ProductQueryResult>;
 
   getProductDetails(ids: number[]): Promise<Product[]>;
@@ -21,3 +22,5 @@ export interface CatalogRepository {
 
   storeSupplier(s: Supplier): Promise<Supplier>;
 }
+
+export type { CatalogRepository };

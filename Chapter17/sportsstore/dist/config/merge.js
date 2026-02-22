@@ -1,12 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.merge = void 0;
-const merge = (target, source) => {
-    Object.keys(source).forEach(key => {
-        if (typeof source[key] === "object"
-            && !Array.isArray(source[key])) {
+export const merge = (target, source) => {
+    Object.keys(source).forEach((key) => {
+        // Prevent prototype pollution
+        if (key === "__proto__" || key === "constructor" || key === "prototype") {
+            return;
+        }
+        if (typeof source[key] === "object" && !Array.isArray(source[key])) {
             if (Object.hasOwn(target, key)) {
-                (0, exports.merge)(target[key], source[key]);
+                merge(target[key], source[key]);
             }
             else {
                 Object.assign(target, source[key]);
@@ -17,4 +17,3 @@ const merge = (target, source) => {
         }
     });
 };
-exports.merge = merge;

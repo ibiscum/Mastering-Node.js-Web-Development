@@ -1,6 +1,6 @@
-import { catalog_repository } from ".";
-import { Cart } from "./cart_models";
-import { Product } from "./catalog_models";
+import * as catalog_repository from "./catalog_repository.js";
+import { Cart } from "./cart_models.js";
+import { Product } from "./catalog_models.js";
 
 export interface CartDetail {
   lines: {

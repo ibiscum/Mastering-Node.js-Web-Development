@@ -1,14 +1,14 @@
 import { Express } from "express";
-import { Address } from "../data/order_models";
+import { Address } from "../data/order_models.js";
 import {
   AddressValidator,
   CustomerValidator,
   ValidationResults,
   getData,
   isValid,
-} from "../data/validation";
-import { Customer } from "../data/customer_models";
-import { createAndStoreOrder } from "./order_helpers";
+} from "../data/validation/index.js";
+import { Customer } from "../data/customer_models.js";
+import { createAndStoreOrder } from "./order_helpers.js";
 
 declare module "express-session" {
   interface SessionData {

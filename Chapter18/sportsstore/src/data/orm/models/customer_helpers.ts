@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize } from "sequelize";
-import { CustomerModel } from "./customer_models";
+import { CustomerModel } from "./customer_models.js";
 
 export const initializeCustomerModels = (sequelize: Sequelize) => {
   CustomerModel.init(
