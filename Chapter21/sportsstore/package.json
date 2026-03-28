@@ -46,7 +46,7 @@
     "express-async-errors": "^3.1.1",
     "express-handlebars": "^7.1.2",
     "express-session": "^1.18.2",
-    "handlebars": "^4.7.8",
+    "handlebars": "^4.7.9",
     "helmet": "^7.1.0",
     "htmx.org": "^1.9.10",
     "http-proxy": "^1.18.1",
