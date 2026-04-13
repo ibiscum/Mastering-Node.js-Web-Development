@@ -849,8 +849,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1(express@5.2.1)
       express-handlebars:
-        specifier: ^8.0.6
-        version: 8.0.6
+        specifier: ^8.0.7
+        version: 8.0.7
       handlebars:
         specifier: ^4.7.9
         version: 4.7.9
@@ -871,11 +871,11 @@ importers:
         specifier: ^5.0.6
         version: 5.0.6
       '@types/node':
-        specifier: ^24.10.13
-        version: 24.10.13
+        specifier: ^24.12.2
+        version: 24.12.2
       nodemon:
-        specifier: ^3.1.13
-        version: 3.1.13
+        specifier: ^3.1.14
+        version: 3.1.14
       tsc-watch:
         specifier: ^7.2.0
         version: 7.2.0(typescript@5.9.3)
@@ -1902,6 +1902,9 @@ packages:
   '@types/node@24.10.13':
     resolution: {integrity: sha512-oH72nZRfDv9lADUBSo104Aq7gPHpQZc4BTx38r9xf9pg5LfP6EzSyH2n7qFmmxRQXh7YlUXODcYsg6PuTDSxGg==}
 
+  '@types/node@24.12.2':
+    resolution: {integrity: sha512-A1sre26ke7HDIuY/M23nd9gfB+nrmhtYyMINbjI1zHJxYteKR6qSMX56FsmjMcDb3SMcjJg5BiRRgOCC/yBD0g==}
+
   '@types/node@25.5.2':
     resolution: {integrity: sha512-tO4ZIRKNC+MDWV4qKVZe3Ql/woTnmHDr5JD8UI5hn2pwBrHEwOEMZK7WlNb5RKB6EoJ02gwmQS9OrjuFnZYdpg==}
 
@@ -2873,6 +2876,10 @@ packages:
     resolution: {integrity: sha512-QpcdCwL2biS64uv/F9XZB8mPPsK3xIQ4Qx7pLlW0lxnFL4PqH4YQeAazuISWQQXKOkX4c5WDVwvXcKKF+9dxug==}
     engines: {node: '>=22.21.1'}
 
+  express-handlebars@8.0.7:
+    resolution: {integrity: sha512-b7aiFGIuTiGM99pXc9cr+CZKvm+kZgYwdsihgEGdD703xG5NZvMUL1U6UOlEv0kLNM2uA+rVecYGxkSWnYu7LQ==}
+    engines: {node: '>=22.22.2'}
+
   express-rate-limit@8.2.2:
     resolution: {integrity: sha512-Ybv7bqtOgA914MLwaHWVFXMpMYeR1MQu/D+z2MaLYteqBsTIp9sY3AU7mGNLMJv8eLg8uQMpE20I+L2Lv49nSg==}
     engines: {node: '>= 16'}
@@ -3579,8 +3586,8 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
-  lru-cache@11.2.6:
-    resolution: {integrity: sha512-ESL2CrkS/2wTPfuend7Zhkzo2u0daGJ/A2VucJOgQ/C48S/zB8MMeMHSGKYpXhIjbPxfuezITkaBH1wqv00DDQ==}
+  lru-cache@11.3.3:
+    resolution: {integrity: sha512-JvNw9Y81y33E+BEYPr0U7omo+U9AySnsMsEiXgwT6yqd31VQWTLNQqmT4ou5eqPFUrTfIDFta2wKhB1hyohtAQ==}
     engines: {node: 20 || >=22}
 
   lru-cache@6.0.0:
@@ -5669,13 +5676,17 @@ snapshots:
     dependencies:
       undici-types: 7.16.0
 
+  '@types/node@24.12.2':
+    dependencies:
+      undici-types: 7.16.0
+
   '@types/node@25.5.2':
     dependencies:
       undici-types: 7.18.2
 
   '@types/oauth@0.9.6':
     dependencies:
-      '@types/node': 24.10.13
+      '@types/node': 20.19.33
 
   '@types/passport-google-oauth20@2.0.17':
     dependencies:
@@ -6829,6 +6840,12 @@ snapshots:
       graceful-fs: 4.2.11
       handlebars: 4.7.9
 
+  express-handlebars@8.0.7:
+    dependencies:
+      glob: 13.0.6
+      graceful-fs: 4.2.11
+      handlebars: 4.7.9
+
   express-rate-limit@8.2.2(express@4.22.1):
     dependencies:
       express: 4.22.1
@@ -7620,7 +7637,7 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lru-cache@11.2.6: {}
+  lru-cache@11.3.3: {}
 
   lru-cache@6.0.0:
     dependencies:
@@ -8050,7 +8067,7 @@ snapshots:
 
   path-scurry@2.0.2:
     dependencies:
-      lru-cache: 11.2.6
+      lru-cache: 11.3.3
       minipass: 7.1.3
 
   path-to-regexp@0.1.12: {}
