@@ -19,6 +19,7 @@ function sanitizeObject(obj: string | number | boolean | null | Record<string, u
 export const testHandler = async (req: Request, resp: Response) => {
   resp.setHeader("Content-Type", "application/json");
   const sanitizedBody = sanitizeObject(req.body);
-  resp.json(sanitizedBody);
+  void sanitizedBody;
+  resp.json({ success: true });
   resp.end();
 };
