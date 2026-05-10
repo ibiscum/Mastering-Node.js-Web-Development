@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type":"module",
-  "private":true,
+  "type": "module",
+  "private": true,
   "scripts": {
     "start": "tsc-watch --onsuccess \"node dist/server.js\""
   },
@@ -13,17 +13,17 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@tsconfig/node20": "^20.1.8",
+    "@tsconfig/node20": "^20.1.9",
     "@types/express": "^5.0.6",
-    "eslint": "^10.2.1",
+    "eslint": "^10.3.0",
     "globals": "^17.6.0",
     "tsc-watch": "^7.2.0",
     "typescript": "^6.0.3"
   },
   "dependencies": {
-    "@types/node": "^25.6.0",
+    "@types/node": "^25.6.2",
     "bootstrap": "^5.3.8",
     "express": "^5.2.1",
-    "express-rate-limit": "^8.4.1"
+    "express-rate-limit": "^8.5.1"
   }
 }
