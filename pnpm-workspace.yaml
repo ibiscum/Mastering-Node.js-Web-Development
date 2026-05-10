@@ -1,5 +1,5 @@
 packages:
-  - Chapter02/*
+  - chapter02/*
   - Chapter03/*
   - Chapter04/*
   - Chapter05/*
@@ -19,6 +19,9 @@ packages:
   - Chapter19/*
   - Chapter20/*
   - Chapter21/*
+
+allowBuilds:
+  sqlite3: true
 
 onlyBuiltDependencies:
   - sqlite3
